@@ -50,7 +50,6 @@ class Controller extends Container implements Module
      * Get post content.
      *
      * @param $response
-     * @param \VisualComposer\Helpers\Request $requestHelper
      * @param \VisualComposer\Helpers\Filters $filterHelper
      *
      * @return mixed|string
@@ -58,7 +57,6 @@ class Controller extends Container implements Module
     private function getData(
         $response,
         $payload,
-        Request $requestHelper,
         Filters $filterHelper
     ) {
         global $post;
@@ -78,7 +76,7 @@ class Controller extends Container implements Module
             } else {
                 // BC for hub templates and old templates
                 // @codingStandardsIgnoreLine
-                if ($post->post_type === 'vcv_templates') {
+                if ($post->post_type === 'vcv_templates' || $post->post_type === 'vcv_tutorials') {
                     $data = rawurlencode(
                         wp_json_encode(
                             [
@@ -204,6 +202,7 @@ class Controller extends Container implements Module
         $currentUserAccessHelper = vchelper('AccessCurrentUser');
         $requestHelper = vchelper('Request');
         $assetsHelper = vchelper('Assets');
+        $optionsHelper = vchelper('Options');
 
         $data = $requestHelper->input('vcv-data');
         $dataDecoded = $requestHelper->inputJson('vcv-data');
@@ -275,6 +274,13 @@ class Controller extends Container implements Module
         } else {
             wp_update_post($post);
             update_post_meta($sourceId, VCV_PREFIX . 'pageContent', $data);
+        }
+
+        $isAllowed = $optionsHelper->get('settings-itemdatacollection-enabled', false);
+        if ($isAllowed) {
+            $licenseType = $requestHelper->input('vcv-license-type');
+            $elements = $requestHelper->input('vcv-elements');
+            vcevent('vcv:saveUsageStats', ['response' => [], 'payload' => ['sourceId' => $sourceId, 'elements' => $elements, 'licenseType' => $licenseType]]);
         }
 
         //bring it back once you're done posting

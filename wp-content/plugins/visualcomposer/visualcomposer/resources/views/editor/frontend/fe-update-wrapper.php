@@ -48,7 +48,9 @@ wp_enqueue_media();
                 'type' => 'constant',
             ],
         ],
-        ['slug' => 'vcv-update-fe']
+        [
+            'slug' => 'vcv-update-fe',
+        ]
     );
     if (is_array($variables)) {
         foreach ($variables as $variable) {

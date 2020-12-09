@@ -117,17 +117,54 @@ class Frontend implements Helper
 
     public function renderContent($sourceId)
     {
+        // @codingStandardsIgnoreLine
+        global $wp_version;
+
         if (!$sourceId || get_post_status($sourceId) !== 'publish') {
             return false;
         }
-        vchelper('AssetsEnqueue')->addToEnqueueList($sourceId);
+        $sourceId = apply_filters(
+            'wpml_object_id',
+            $sourceId,
+            get_post_type($sourceId)
+        );
 
         $previousDynamicContent = \VcvEnv::get('DYNAMIC_CONTENT_SOURCE_ID');
-        if (empty($previousDynamicContent) || $previousDynamicContent !== $sourceId) {
-            \VcvEnv::set('DYNAMIC_CONTENT_SOURCE_ID', $sourceId);
+        \VcvEnv::set('DYNAMIC_CONTENT_SOURCE_ID', $sourceId);
+        vchelper('AssetsEnqueue')->addToEnqueueList($sourceId);
+
+        // @codingStandardsIgnoreLine
+        if (version_compare($wp_version, '5.2', '>=')) {
+            $sourceContent = get_the_content('', false, $sourceId);
+        } else {
+            $post = get_post($sourceId);
+            setup_postdata($post);
+            $sourceContent = get_the_content('', false);
+            wp_reset_postdata();
         }
-        $sourceContent = get_the_content('', '', $sourceId);
-        $sourceContent = apply_filters('the_content', $sourceContent);
+        if (strpos($sourceContent, '<!--vcv no format-->') === false) {
+            // Call wpautop for non VCWB sourceId
+            $sourceContent = wpautop($sourceContent);
+        }
+        // Call the_content filter callbacks separately
+        if (function_exists('do_blocks')) {
+            $sourceContent = do_blocks($sourceContent);
+        }
+        $sourceContent = shortcode_unautop($sourceContent);
+        $sourceContent = prepend_attachment($sourceContent);
+        if (function_exists('wp_filter_content_tags')) {
+            $sourceContent = wp_filter_content_tags($sourceContent);
+        } else {
+            $sourceContent = wp_make_content_images_responsive($sourceContent);
+        }
+        $sourceContent = do_shortcode($sourceContent);
+        $sourceContent = convert_smilies($sourceContent);
+        $sourceContent = str_replace(
+            '<!--vcv no format-->',
+            '',
+            $sourceContent
+        );
+        $sourceContent = vcfilter('vcv:frontend:content', $sourceContent);
         \VcvEnv::set('DYNAMIC_CONTENT_SOURCE_ID', $previousDynamicContent);
 
         return $sourceContent;

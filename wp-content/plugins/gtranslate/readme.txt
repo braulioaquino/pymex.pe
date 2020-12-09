@@ -3,8 +3,8 @@ Contributors: edo888
 Author: Translate AI Multilingual Solutions
 Tags: translate, translate wordpress, multilingual, translation, translate language, bilingual, localization, translation proxy, localisation, multilanguage, google translate
 Requires at least: 2.8.1
-Tested up to: 5.4
-Stable tag: 2.8.54
+Tested up to: 5.5
+Stable tag: 2.8.60
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
@@ -16,7 +16,9 @@ Translate WordPress with Google Translate multilanguage plugin to make your webs
 
 Translate WordPress with GTranslate plugin uses Google Translate automatic translation service to **translate wordpress** site with Google power and make it **multilingual**. With 103 available languages your site will be available to more than 99% of internet users. Our paid versions are **fully SEO compatible** which will **increase your international traffic and sales**. This translate plugin is a budget multilingual WordPress solution which combines automatic and human translations to save money and is easy to implement.
 
-GTranslate is a leading website translation services provider since 2008 and powers more than 500.000 multilingual websites worldwide.
+GTranslate is a leading website translation services provider since 2008, it moves away the language barriers.
+
+Compared to other translation plugins for WordPress, we use cloud based approach which does not slow down your website. In addition to that, we can offer complete SEO features based on sub-domains with our paid options, which can make your website appear in search engines in different languages which will increase your international traffic and sales. In our paid versions we DO NOT limit the number of words or the number of translated pageviews. You DO NOT pay additionally for automatic translations.
 
 Please use [GTranslate Support](https://wordpress.org/support/plugin/gtranslate) for your questions and support requests! We are multilingual!
 
@@ -46,6 +48,7 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 * Multilingual interface
 * Alternative flags for Quebec, Canada, USA, Brazil, Mexico, Argentina, Colombia
 * Lazy loading for language flags to boost performance
+* Live Chat Support
 
 **Paid Features**
 
@@ -53,8 +56,8 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 * Neural machine translations with human level translation quality
 * Increase traffic and AdSense revenue
 * Search engine friendly (SEF) URLs
-* Yoast SEO compatible
-* WooCommerce compatible
+* Yoast SEO compatible - translate meta keywords, meta description, schema.org data structures, translate sitemaps
+* WooCommerce compatible - translate products, schema.org data structures
 * You can have sub-directory (example.com/**es**/) or sub-domain (**es.**example.com) URL structure
 * URL Translation aka slug translation is possible (example.com/about-us &rarr; example.es/sobre-nosotros)
 * Add hreflang tags for translated alternatives
@@ -83,8 +86,6 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 
 **Edit Translations Demo (paid)**
 [youtube https://www.youtube.com/watch?v=YwSy3VtQx3I]
-
-List of supported languages: Afrikaans, Albanian, Amharic, Arabic, Armenian, Azerbaijani, Basque, Belarusian, Bengali, Bosnian, Bulgarian, Catalan, Cebuano, Chichewa, Chinese (Simplified), Chinese (Traditional), Corsican, Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Frisian, Galician, Georgian, German, Greek, Gujarati, Haitian Creole, Hausa, Hawaiian, Hebrew, Hindi, Hmong, Hungarian, Icelandic, Igbo, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Luxembourgish, Macedonian, Malagasy, Malay, Malayalam, Maltese, Maori, Marathi, Mongolian, Myanmar (Burmese), Nepali, Norwegian, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Samoan, Scottish Gaelic, Serbian, Sesotho, Shona, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sudanese, Swahili, Swedish, Tajik, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu, Uzbek, Vietnamese, Welsh, Xhosa, Yiddish, Yoruba, Zulu
 
 == Installation ==
 
@@ -116,17 +117,17 @@ If you have any issues, please do not hesitate to use our [Support Forum](https:
 
 == Frequently Asked Questions ==
 
-= It doesn't work, what to do? =
+= It doesn't translate, what to do? =
 Please check [GTranslate Support Forum](https://wordpress.org/support/plugin/gtranslate) and feel free to create a new topic if you cannot find answers.
 
 = What is GTranslate? =
-GTranslate is a multilingual solution for your website.
+GTranslate can translate your website into multiple languages and make it multilingual.
 
 * Multilingual solution makes your website available to the world
 * One click translation helps visitors to read your site in their native language
 * Free automatic translation translates your site instantly upon installation
 * Professional translation by a human being is available 24/7
-* Customizable layout lets you choose the suitable layout for your site
+* Customizable language switcher lets you choose the suitable layout for your site
 * Analytics with Google provides insight into your audience and user activity
 
 [vimeo http://vimeo.com/30132555]
@@ -157,9 +158,10 @@ You can get an instant website translation estimate by using our [Website Word C
 = Which languages are supported? =
 Here is the list: Afrikaans, Albanian, Amharic, Arabic, Armenian, Azerbaijani, Basque, Belarusian, Bengali, Bosnian, Bulgarian, Catalan, Cebuano, Chichewa, Chinese (Simplified), Chinese (Traditional), Corsican, Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Frisian, Galician, Georgian, German, Greek, Gujarati, Haitian Creole, Hausa, Hawaiian, Hebrew, Hindi, Hmong, Hungarian, Icelandic, Igbo, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Luxembourgish, Macedonian, Malagasy, Malay, Malayalam, Maltese, Maori, Marathi, Mongolian, Myanmar (Burmese), Nepali, Norwegian, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Samoan, Scottish Gaelic, Serbian, Sesotho, Shona, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sudanese, Swahili, Swedish, Tajik, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu, Uzbek, Vietnamese, Welsh, Xhosa, Yiddish, Yoruba, Zulu
 
-= Is it SEO compatible? =
+= Is GTranslate SEO compatible? =
 Our free version doesn't give any SEO advantage.
-For SEO features and multilingual SEO you need to use our paid versions which have all the SEO advantages.
+
+For SEO features and multilingual SEO you need to go with a paid version which have all the SEO advantages. Our paid version will translate your website and allow search engines to discover and index the translated content.
 Unlike other translate plugins, we provide you all the possible tools to match with your multilingual SEO strategy.
 For example you can have your translated content available via sub-directories (https://example.com/es, https://example.com/fr) or sub-domains (https://it.example.com, https://fr.example.com) or even you can host the translated versions on a top level country specific domain or any other domain like (https://example.fr, https://example.de), which will increase your chances to rank higher in local search engine's results pages.
 
@@ -193,8 +195,8 @@ Yes, you need to wrap the text you don't want to be translated with &lt;span cla
 With our paid versions you will have more control on the content which you do not want to translate. We have Skip Phrases, Skip Translations by CSS selectors and also Skip Pages features available.
 You can read more about skipping translations on [How to skip translations?](https://docs.gtranslate.io/en/articles/1349930-how-to-skip-translations)
 
-= Which plugins are supported? =
-All plugins are supported.
+= Which plugins can it translate? =
+All plugins are supported including popular plugins like WooCommerce, Yoast SEO.
 
 Our technology allows us to translate what is visible on the page, since we are parsing the end result when your website is already generated and it doesn't matter how the content is generated and by which plugin. We can translate all HTML websites.
 If you notice that something is not translated, please contact our live chat and we will be happy to solve any issues. Usually the not translated content is being loaded on your website from 3rd party sources.
@@ -220,6 +222,9 @@ Updates are done seamlessly. Since the translations are hosted on our server we 
 No, we provide the automatic translations for free.
 
 In our free version we provide Phrase Based machine translations from Google Translate. While in our paid versions we provide you state of the art Neural Translations from Google Translate. We also do not have limits on the number of words on your website unlike other translate plugins.
+
+Unlike other plugins like TranslatePress or Weglot you do not pay for automatic translations additionally.
+
 By the way we alse offer a cost effective approach for improving the website translations. You can get a automatic translation post-editing service from us, which will be done by a native speaker or order a professional translation. You can get an instant estimate for your website on [Website Translation Quote](https://gtranslate.io/website-translation-quote)
 
 = Can I test before making a payment? =
@@ -247,6 +252,26 @@ If you want us to translate your website professionally or provide you a proofre
 8. User Dashboard
 
 == Changelog ==
+= 2.8.60 =
+* Added debug option for WooCommerce Email translation
+
+= 2.8.59 =
+* Fix for redirect loop in sub-directory translate mode caused by empty get parameters: ?a=&b= -> ?a&b
+
+= 2.8.58 =
+* New monochrome flags option
+* Avoids using /RegEx/ in JavaScript to not cause conflicts with WP Rocket optimizer
+
+= 2.8.57 =
+* New control options for flag size and colors of the "Nice dropdown with flags" language switcher
+* Removed old PNG images for dropdown arrow and gradient background, now using SVG and CSS instead
+
+= 2.8.56 =
+* Translate WooCommerce Emails feature is fixed and is out of beta
+
+= 2.8.55 =
+* Fixed blank settings page issue when settings data is in corrupted state in database
+
 = 2.8.54 =
 * Added more servers into the list of our growing Translation Delivery Network
 

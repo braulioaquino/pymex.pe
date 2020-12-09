@@ -27,7 +27,7 @@ if(isset($get_params['gurl']))
     unset($get_params['gurl']);
 
 if(count($get_params)) {
-    $page_url .= '?' . http_build_query($get_params);
+    $page_url .= '?' . rtrim(str_replace('=&', '&', http_build_query($get_params)), '=');
 }
 
 $main_lang = isset($data['default_language']) ? $data['default_language'] : $main_lang;

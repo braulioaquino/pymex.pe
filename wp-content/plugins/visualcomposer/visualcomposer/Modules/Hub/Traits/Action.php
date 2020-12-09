@@ -70,13 +70,16 @@ trait Action
                 $loggerHelper->log(
                     sprintf(
                         __(
-                            'A zip file of Visual Composer extension is broken. Checksum check failed. Please check your Internet connection, run Reset in Visual Composer Settings and try again.
+                            'A .zip file of the Visual Composer is broken - the checksum check failed. Check your Internet connection, initiate reset under Visual Composer Settings, and try again.
 
 If the problem still occurs, visit %smy.visualcomposer.com/support%s for technical assistance.
 ',
                             'visualcomposer'
                         ),
-                        '<a href="https://my.visualcomposer.com/support/?utm=vcwb-editor&utm-source=error-message&utm_campaign=support" target="_blank">',
+                        sprintf(
+                            '<a href="%s" target="_blank" rel="noopener noreferrer">',
+                            str_replace('utm_content=button', 'utm_content=text', vcvenv('VCV_SUPPORT_URL'))
+                        ),
                         '</a>'
                     )
                 );

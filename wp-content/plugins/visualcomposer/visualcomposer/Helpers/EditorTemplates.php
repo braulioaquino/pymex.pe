@@ -77,7 +77,7 @@ class EditorTemplates implements Helper
                 break;
             case 'hub':
             case 'predefined':
-                $name = __('Visual Composer Hub Templates', 'visualcomposer');
+                $name = __('Hub Templates', 'visualcomposer');
                 break;
         }
 
@@ -183,7 +183,7 @@ class EditorTemplates implements Helper
         $templateGroups = $this->all();
         $options = [];
         $options[] = [
-            'label' => __('Select your template', 'visualcomposer'),
+            'label' => __('Select a template', 'visualcomposer'),
             'value' => '',
         ];
 

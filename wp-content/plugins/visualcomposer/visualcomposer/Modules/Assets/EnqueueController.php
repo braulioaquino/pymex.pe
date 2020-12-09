@@ -40,7 +40,6 @@ class EnqueueController extends Container implements Module
         ) {
             $this->wpAddAction('init', 'setCustomWpScripts');
         }
-
         $this->wpAddAction('wp_footer', 'enqueueAssetsFromList', 11);
         $this->wpAddAction('wp_footer', 'enqueueVcvAssets');
 
@@ -111,6 +110,8 @@ class EnqueueController extends Container implements Module
                     }
                     ob_start();
                     if ($printJs) {
+                        //fix for WooCommerce Google Analytics Pro plugin
+                        add_filter('wc_google_analytics_pro_do_not_track', '__return_true');
                         // This action needed to add all 3rd party localizations/scripts queue in footer for exact post id
                         $this->callNonWordpressActionCallbacks('wp_footer');
                     }
@@ -130,10 +131,12 @@ class EnqueueController extends Container implements Module
 
     protected function callNonWordpressActionCallbacks($action)
     {
-        global $wp_filter;
+        global $wp_filter, $wp_current_filter;
         // Run over actions sorted by priorities
         $actions = $wp_filter[ $action ]->callbacks;
         ksort($actions);
+        // @codingStandardsIgnoreLine
+        $wp_current_filter[] = $action;
         foreach ($actions as $priority => $callbacks) {
             // Run over callbacks
             foreach ($callbacks as $callback) {
@@ -148,6 +151,8 @@ class EnqueueController extends Container implements Module
                 call_user_func_array($callback['function'], ['']);
             }
         }
+        // @codingStandardsIgnoreLine
+        array_pop($wp_current_filter);
     }
 
     protected function enqueueVcvAssets($sourceIds)

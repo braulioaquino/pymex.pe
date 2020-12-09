@@ -20,9 +20,15 @@ class Localizations extends Container implements Helper
      */
     public function getLocalizations()
     {
+        $source = 'vcwb';
+        if (defined('VCV_AUTHOR_API_KEY')) {
+            $source = 'theme-author-vcwb';
+        }
+
         $wpHelper = vchelper('Wp');
         $locale = [
             'addElement' => __('Add Element', 'visualcomposer'),
+            'addContent' => __('Add Content', 'visualcomposer'),
             'addPremiumElement' => __('Visual Composer Hub', 'visualcomposer'),
             'addTemplate' => __('Add Template', 'visualcomposer'),
             'treeView' => __('Tree View', 'visualcomposer'),
@@ -44,72 +50,71 @@ class Localizations extends Container implements Helper
             'publish' => __('Publish', 'visualcomposer'),
             'submitForReview' => __('Submit for Review', 'visualcomposer'),
             'saveDraft' => __('Save Draft', 'visualcomposer'),
+            'activationButtonTitle' => vchelper('License')->activationButtonTitle(),
             'goPremium' => __('Go Premium', 'visualcomposer'),
+            'getFreeLicense' => __('Get Free License', 'visualcomposer'),
+            'activated' => __('Activated', 'visualcomposer'),
             'close' => __('Close', 'visualcomposer'),
-            'premiumElementsButton' => __('Go Premium', 'visualcomposer'),
-            'premiumTemplatesButton' => __('Go Premium', 'visualcomposer'),
-            'premiumHubButton' => __('Go Premium', 'visualcomposer'),
             'emptyTreeView' => __(
-                'There is no content on your page - start by adding element or template.',
+                'There is no content on the page - start by adding an element or template.',
                 'visualcomposer'
             ),
             'customCSS' => __('Custom CSS', 'visualcomposer'),
             'localCSS' => __('Local CSS', 'visualcomposer'),
-            'localCSSLabel' => __('Local CSS will be applied to this particular page only', 'visualcomposer'),
             'globalCSS' => __('Global CSS', 'visualcomposer'),
-            'globalCSSLabel' => __('Apply custom Global CSS code site-wide.', 'visualcomposer'),
             'customJS' => __('Custom JavaScript', 'visualcomposer'),
             'localJS' => __('Local JavaScript', 'visualcomposer'),
-            'localJSLabel' => __('Local JavaScript will be applied to this particular page only', 'visualcomposer'),
+            'localJSLabel' => __('Local JavaScript will be applied to this particular page only.', 'visualcomposer'),
             'globalJS' => __('Global JavaScript', 'visualcomposer'),
-            'globalJSLabel' => __('Apply custom Global Javascript code site-wide.', 'visualcomposer'),
+            'globalJSLabel' => __('Apply custom Global Javascript code sitewide.', 'visualcomposer'),
             'save' => __('Save', 'visualcomposer'),
             'templateName' => __('Template Name', 'visualcomposer'),
             'saveTemplate' => __('Save Template', 'visualcomposer'),
             'removeTemplate' => __('Remove Template', 'visualcomposer'),
-            'templateSaveFailed' => __('Template save failed', 'visualcomposer'),
+            'templateSaveFailed' => __('Failed to save the template.', 'visualcomposer'),
             'downloadMoreTemplates' => __('Download More Templates', 'visualcomposer'),
             'getMoreElements' => __('Get More Elements', 'visualcomposer'),
             'getMoreTemplates' => __('Get More Templates', 'visualcomposer'),
             'noTemplatesFound' => __(
             // @codingStandardsIgnoreLine
-                'You don\'t have any templates yet. Try to save your current layout as a template or download templates from Visual Composer Hub.',
+                'There are no templates yet. Save the current layout as a template or download templates from Visual Composer Hub.',
                 'visualcomposer'
             ),
             'notRightTemplatesFound' => __(
-                'Didn\'t find the right template? Check out Visual Composer Hub for more layout templates.',
+                'Didn\'t find the right template? Check out Visual Composer Hub for more templates.',
                 'visualcomposer'
             ),
             'accessVisualComposerHubToDownload' => __(
-                'Access Visual Composer Hub - to download additional elements, templates and extensions.',
+                'Access the Visual Composer Hub - download additional elements, blocks, templates, and addons.',
                 'visualcomposer'
             ),
-            'removeTemplateWarning' => __('Do you want to remove this template?', 'visualcomposer'),
-            'removeElementPresetWarning' => __('Do you want to remove this element preset?', 'visualcomposer'),
-            'templateRemoveFailed' => __('Failed to remove template', 'visualcomposer'),
-            'blankPageHeadingPart1' => __('Name Your Page, Select', 'visualcomposer'),
+            'removeTemplateWarning' => __('Do you want to delete this template?', 'visualcomposer'),
+            'removeElementPresetWarning' => __('Do you want to delete this element preset?', 'visualcomposer'),
+            'templateRemoveFailed' => __('Failed to remove the template', 'visualcomposer'),
+            'blankPageHeadingSelect' => __('Name Your Page, Select', 'visualcomposer'),
+            'blankPageHeadingPart1' => __('Name The Page', 'visualcomposer'),
             'blankPageHeadingPart2' => __('Layout and Start Building', 'visualcomposer'),
             'blankPageTitleHeadingPart1' => __('Name Your ', 'visualcomposer'),
             'blankPageTitleHeadingPart2' => __('and Start Building', 'visualcomposer'),
             'blankPageHelperText' => __(
             // @codingStandardsIgnoreLine
-                'Start by adding an element to your layout or select one of the pre-defined templates.',
+                'Start by adding an element to the layout or select one of the pre-defined templates.',
                 'visualcomposer'
             ),
             'blankPageInputPlaceholderText' => __('Page title', 'visualcomposer'),
             'addTemplateHelperText' => __(
             // @codingStandardsIgnoreLine
-                'Didn\'t find a perfect template? Get a Premium license to download it from Visual Composer Hub.',
+                'Didn\'t find a perfect template? Get a premium license to download templates from the Visual Composer Hub.',
                 'visualcomposer'
             ),
             'addElementHelperText' => __(
             // @codingStandardsIgnoreLine
-                'Didn\'t find an element? Get a Premium license to download the right content element in Visual Composer Hub.',
+                'Didn\'t find an element? Get a premium license to download elements from the Visual Composer Hub.',
                 'visualcomposer'
             ),
             'hubHelperText' => __(
             // @codingStandardsIgnoreLine
-                'Get a Premium license to access Visual Composer Hub. Download professionally designed templates, more content elements, extensions, and more.',
+                'Get a premium license to access Visual Composer Hub. Download professionally designed templates, more content elements, extensions, and more.',
                 'visualcomposer'
             ),
             'add' => __('Add', 'visualcomposer'),
@@ -122,83 +127,85 @@ class Localizations extends Container implements Helper
             'pasteAfter' => __('Paste After', 'visualcomposer'),
             'remove' => __('Remove', 'visualcomposer'),
             'move' => __('Move', 'visualcomposer'),
-            'searchContentElements' => __('Search content elements', 'visualcomposer'),
-            'searchContentElementsAndTemplates' => __('Search content elements and templates', 'visualcomposer'),
-            'searchContentTemplates' => __('Search content templates', 'visualcomposer'),
+            'searchContentElements' => __('Search for content elements', 'visualcomposer'),
+            'searchContentElementsAndTemplates' => __('Search for content elements and templates', 'visualcomposer'),
+            'searchContentTemplates' => __('Search for templates', 'visualcomposer'),
             'templateAlreadyExists' => __(
-                'Template with this name already exist. Please specify another name.',
+                'A template with this name already exists. Choose a different template name.',
                 'visualcomposer'
             ),
-            'templateContentEmpty' => __('There is no content on your page - nothing to save', 'visualcomposer'),
-            'specifyTemplateName' => __('Enter template name to save your page as a template', 'visualcomposer'),
+            'templateContentEmpty' => __('There is no content on the page to be saved.', 'visualcomposer'),
+            'specifyTemplateName' => __('Enter the template name to save this page as a template.', 'visualcomposer'),
             'addOneColumn' => __('Add one column', 'visualcomposer'),
             'addTwoColumns' => __('Add two columns', 'visualcomposer'),
             'addThreeColumns' => __('Add three columns', 'visualcomposer'),
             'addFourColumns' => __('Add four columns', 'visualcomposer'),
             'addFiveColumns' => __('Add five columns', 'visualcomposer'),
             'addCustomRowLayout' => __('Add custom row layout', 'visualcomposer'),
-            'addTextBlock' => __('Add Text block', 'visualcomposer'),
+            'addTextBlock' => __('Add a text block', 'visualcomposer'),
             'frontendEditor' => __('Edit with Visual Composer', 'visualcomposer'),
             'classicEditor' => __('Classic Editor', 'visualcomposer'),
             'openFrontendEditorFromClassic' => __(
             // @codingStandardsIgnoreLine
-                'You are switching to Visual Composer. Visual Composer will load the latest version of content created with the builder.',
+                'You are switching to Visual Composer. Visual Composer will load the latest version of the content created with the website builder.',
                 'visualcomposer'
             ),
             'enableClassicEditorConfirmMessage' => __(
             // @codingStandardsIgnoreLine
-                'You are switching to Classic editor. The content created with Visual Composer will be copied to Classic editor (style changes may apply.) Any changes made in the Classic editor will not be synced with Visual Composer layout. Do you want to proceed?',
+                'You are switching to the Classic Editor. The content created with Visual Composer will be copied to Classic Editor (style changes may apply). Any changes made in the Classic Editor will not be synced with the Visual Composer layout. Do you want to proceed?',
                 'visualcomposer'
             ),
             'blankPage' => __('Blank Page', 'visualcomposer'),
-            'searchTemplates' => __('Search templates by name and description', 'visualcomposer'),
+            'searchTemplates' => __('Search for templates by name and description', 'visualcomposer'),
             'noResultOpenHub' => __('Open Visual Composer Hub', 'visualcomposer'),
             'notRightElementsFound' => __(
-                'Didn\'t find the right element? Check out Visual Composer Hub for more content elements.',
+                'Didn\'t find an element? Check the Visual Composer Hub for more elements.',
                 'visualcomposer'
             ),
             'activationFailed' => __(
                 'An error occurred during the Visual Composer extension download process.
-<ul><li>- Check if your server has a connection to the Internet</li><li>- Check your server proxy configuration settings</li><li>- Check your server firewall settings and access to https://account.visualcomposer.io</li><li>- Check if your server has access to the <a href="https://cdn.hub.visualcomposer.com/vcwb-teasers/youtubePlayer.3307569.1518529200.youtube-player-preview.jpg" target="_blank">Amazon AWS</a></li></ul>',
+<ul><li>- Check if your server has a connection to the Internet.</li><li>- Check if your server proxy has proper configuration settings.</li><li>- Check your server firewall settings and access to https://account.visualcomposer.io</li><li>- Check if your server has access to the <a href="https://aws.amazon.com/ru/premiumsupport/knowledge-center/s3-find-ip-address-ranges/" target="_blank" rel="noopener noreferrer">Amazon AWS Region: `us-west-2` IP</a></li></ul>',
                 'visualcomposer'
             ),
-            'forgotYourLicenseText' => __(
-                'Forgot your license? Retrieve it in <a href="https://my.visualcomposer.com/licenses/?utm_medium=wp-dashboard&utm_source=activation-page&utm_campaign=get-license" class="vcv-activation-input-field-forgot-license-link" target="_blank">My Visual Composer</a> under Licenses section',
+            'alreadyHaveALicenseText' => __(
+                'Already have a license? Log in to <a href="{link}" class="vcv-activation-input-field-forgot-license-link" target="_blank" rel="noopener noreferrer">My Visual Composer</a> to find it.',
+                'visualcomposer'
+            ),
+            'doMoreWithVcText' => __(
+                'Do more with the Visual Composer Hub',
                 'visualcomposer'
             ),
             'nothingFound' => __('Nothing found', 'visualcomposer'),
-            'addImage' => __('Add Image', 'visualcomposer'),
-            'removeImage' => __('Remove Image', 'visualcomposer'),
-            'moveImage' => __('Move Image', 'visualcomposer'),
-            'editReplaceImage' => __('Edit or Replace Image', 'visualcomposer'),
-            'addLink' => __('Add Link', 'visualcomposer'),
-            'selectUrl' => __('Select URL', 'visualcomposer'),
-            'insertEditLink' => __('Insert or Edit Link', 'visualcomposer'),
-            'urlInputPlaceholder' => __('Enter destination URL', 'visualcomposer'),
-            'linkToExistingContent' => __('Or link to existing content', 'visualcomposer'),
+            'addImage' => __('Add an image', 'visualcomposer'),
+            'removeImage' => __('Remove the image', 'visualcomposer'),
+            'moveImage' => __('Move the image', 'visualcomposer'),
+            'editReplaceImage' => __('Edit or replace the image', 'visualcomposer'),
+            'addLink' => __('Add a link', 'visualcomposer'),
+            'selectUrl' => __('Select a URL', 'visualcomposer'),
+            'insertEditLink' => __('Insert or edit a link', 'visualcomposer'),
+            'linkToExistingContent' => __('Or link to an existing content', 'visualcomposer'),
             'searchExistingContent' => __('Search existing content', 'visualcomposer'),
             'popup' => __('Popup', 'visualcomposer'),
-            'selectPopupTemplate' => __('Select popup template', 'visualcomposer'),
-            'onPageLoad' => __('Popup On Every Page Load', 'visualcomposer'),
-            'onExitIntent' => __('Popup On Exit Intent', 'visualcomposer'),
-            'onElementId' => __('Popup On Element ID', 'visualcomposer'),
-            'selectPopupTemplate' => __('Select popup template', 'visualcomposer'),
-            'delayInSeconds' => __('Delay in seconds', 'visualcomposer'),
+            'selectPopupTemplate' => __('Select a popup template', 'visualcomposer'),
+            'onPageLoad' => __('Popup on every page load', 'visualcomposer'),
+            'onExitIntent' => __('Popup on exit-intent', 'visualcomposer'),
+            'onElementId' => __('Popup on element ID', 'visualcomposer'),
+            'delayInSeconds' => __('Delay (seconds)', 'visualcomposer'),
             'showEveryDays' => __('Show every (days)', 'visualcomposer'),
             'popupOpenOnPageLoad' => __('The popup will open once the page is loaded.', 'visualcomposer'),
-            'popupOpenOnExitIntent' => __('The popup will load if users try to exit the page.', 'visualcomposer'),
+            'popupOpenOnExitIntent' => __('The popup will load if a user tries to exit the page.', 'visualcomposer'),
             'popupOpenOnElementId' => __(
                 'The popup will appear when an element with a unique Element ID will be displayed (scrolled to) on the page.',
                 'visualcomposer'
             ),
             'onClickAction' => __('OnClick action', 'visualcomposer'),
             'noExistingContentFound' => __('Nothing found', 'visualcomposer'),
-            'openLinkInTab' => __('Open link in a new tab', 'visualcomposer'),
-            'addNofollow' => __('Add nofollow option to link', 'visualcomposer'),
-            'enterDestinationUrl' => __('Enter destination URL', 'visualcomposer'),
-            'titleAttributeText' => __('Title attribute will be displayed on link hover', 'visualcomposer'),
+            'openLinkInTab' => __('Open the link in a new tab', 'visualcomposer'),
+            'addNofollow' => __('Add "nofollow" option to the link', 'visualcomposer'),
+            'enterDestinationUrl' => __('Enter the destination URL', 'visualcomposer'),
+            'titleAttributeText' => __('The title attribute will be displayed on the link hover.', 'visualcomposer'),
             'title' => __('Title', 'visualcomposer'),
-            'bundleUpdateFailed' => __('Visual Composer Cloud update failed, please try again', 'visualcomposer'),
+            'bundleUpdateFailed' => __('Visual Composer Hub update failed, try again.', 'visualcomposer'),
             'preview' => __('Preview', 'visualcomposer'),
             'previewChanges' => __('Preview Changes', 'visualcomposer'),
             'savingResults' => __('Saving Results', 'visualcomposer'),
@@ -207,60 +214,61 @@ class Localizations extends Container implements Helper
             'elementIsHidden' => __('Element is Hidden', 'visualcomposer'),
             'editFormSettingsText' => __('Element Settings', 'visualcomposer'),
             'presetsHelperText' => __(
-                'Change default parameters to create a unique element. The new element will be added to your library.',
+                'Change the default parameters to create a unique element. The new element will be added to your library.',
                 'visualcomposer'
             ),
-            'saveAsPreset' => __('Save as Preset', 'visualcomposer'),
-            'saveAsTemplate' => __('Save as Template', 'visualcomposer'),
+            'saveAsPreset' => __('Save as a Preset', 'visualcomposer'),
+            'saveAsTemplate' => __('Save as a Template', 'visualcomposer'),
             'downloadingInitialExtensions' => __('Downloading initial extensions', 'visualcomposer'),
             'downloadingAssets' => __('Downloading assets {i} of {cnt}: {name}', 'visualcomposer'),
+            'downloading' => __('Downloading', 'visualcomposer'),
             'postUpdateText' => __('Updating posts {i} in {cnt}: {name}', 'visualcomposer'),
             'postUpdateAjaxRequestError' => __('Failed to load: {file}', 'visualcomposer') . ' #10077',
             'none' => __('None', 'visualcomposer'),
             'mobileTooltipText' => __(
             // @codingStandardsIgnoreLine
-                'Double tap on an element to open the edit window. Tap and hold to initiate drag and drop in a Tree view.',
+                'Double-tap on an element to open the edit window. Tap and hold to initiate drag and drop.',
                 'visualcomposer'
             ),
             'template' => __('Template', 'visualcomposer'),
             'defaultTemplate' => __('Theme Default', 'visualcomposer'),
             'pageTemplateDescription' => __(
-                'To apply a template save changes and reload the page',
+                'To apply a template save changes and reload the page.',
                 'visualcomposer'
             ),
             'pageTemplateReloadDescription' => __(
-                'To apply a template you will need to save changes and content will be reloaded.',
+                'To apply title, save changes, and reload the page.',
                 'visualcomposer'
             ),
             'pageTitleDescription' => __(
                 'To apply title changes save changes and reload the page',
                 'visualcomposer'
             ),
-            'pageTitleDisableDescription' => __('Disable page title', 'visualcomposer'),
+            'pageTitleDisableDescription' => __('Disable the page title', 'visualcomposer'),
             'successElementDownload' => __(
-                '{name} has been successfully downloaded from the Visual Composer Hub and added to your library',
+                '{name} has been successfully downloaded from the Visual Composer Hub and added to the Element Library.',
                 'visualcomposer'
             ),
             'successAddonDownload' => __(
-                '{name} has been successfully downloaded from the Visual Composer Hub and added to your library. To finish the installation process you need to reload the page.',
+                '{name} has been successfully downloaded from the Visual Composer Hub and added to the Element Library. To finish the installation process reload the page.',
                 'visualcomposer'
             ),
             'copyElementWithId' => __(
-                'Your element was copied without a unique Element ID. You can adjust the Element ID by editing the copied element.',
+                'The element was copied without a unique Element ID. Adjust the Element ID by editing the element.',
                 'visualcomposer'
             ),
             'cloneElementWithId' => __(
-                'Your element was cloned without a unique Element ID. You can adjust the Element ID by editing the cloned element.',
+                'The element was cloned without a unique Element ID. Adjust the Element ID by editing the element.',
                 'visualcomposer'
             ),
             'licenseErrorElementDownload' => __(
-                'Failed to download element (license expired or request timed out)',
+                'Failed to download the element (license expired or request timed out)',
                 'visualcomposer'
             ),
-            'defaultErrorElementDownload' => __('Failed to download element', 'visualcomposer'),
+            'defaultErrorElementDownload' => __('Failed to download the element', 'visualcomposer'),
             'feOopsMessageDefault' => __(
             // @codingStandardsIgnoreLine
-                'It seems that something went wrong with loading content. Please make sure you are loading correct content and try again.',
+                'It seems that something went wrong with loading the content. Make sure you are loading the correct content and try again.',
                 'visualcomposer'
             ),
             'feOopsButtonTextDefault' => __('Return to WordPress dashboard', 'visualcomposer'),
@@ -268,20 +276,20 @@ class Localizations extends Container implements Helper
             'feOopsReportAnIssueButtonText' => __('Report an Issue', 'visualcomposer'),
             'feOopsMessagePageForPosts' => __(
             // @codingStandardsIgnoreLine
-                'It seems you are trying to edit archive page which displays your post archive instead of content. Before edit, please make sure to convert it to a static page via your WordPress admin',
+                'It seems you are trying to edit the archive page which displays post archives instead of content. Before the edit, make sure to convert it to a static page via your WordPress admin.',
                 'visualcomposer'
             ),
             'feOopsButtonTextPageForPosts' => __('Return to WordPress dashboard', 'visualcomposer'),
             'replaceElementText' => __(
-                'You can replace the {elementLabel} within this element with another {elementLabel} from your elements',
+                'Replace the {elementLabel} within this element with another {elementLabel} from the Element Library.',
                 'visualcomposer'
             ),
             'replaceElementEditForm' => __(
-                'Replace current element with different element from the same category',
+                'Replace the element with a different element from the same category.',
                 'visualcomposer'
             ),
             'errorReportSubmitted' => __(
-                'We would like to acknowledge that we have received your request and a ticket has been created. A support representative will be reviewing your request and will send you a personal response.',
+                'We have received your request - the ticket has been created. Our support representative will contact you shortly.',
                 'visualcomposer'
             ),
             'backToWpAdminText' => __(
@@ -302,15 +310,23 @@ class Localizations extends Container implements Helper
             ),
             'chooseHFS' => sprintf(
                 __(
-                    'Choose %s or %screate new%s.',
+                    'Select a %s or %screate a new one%s.',
                     'visualcomposer'
                 ),
                 '{name}',
-                '<a href="{link}" target="_blank">',
+                '<a href="{link}" target="_blank" rel="noopener noreferrer">',
                 '</a>'
             ),
             'selectHFS' => __(
                 'Default',
+                'visualcomposer'
+            ),
+            'selectHFSGlobal' => __(
+                'Global Default',
+                'visualcomposer'
+            ),
+            'selectHFSLayout' => __(
+                'Layout Default',
                 'visualcomposer'
             ),
             'elementDownloadRequiresUpdate' => __(
@@ -334,51 +350,51 @@ class Localizations extends Container implements Helper
                 '{name}'
             ),
             'themeDefaultDescription' => __(
-                'Your WordPress theme defined layout for specific page, post, or custom post type.',
+                'WordPress theme defined layout for a specific page, post, or custom post type.',
                 'visualcomposer'
             ),
             'vcBoxedDescription' => __(
-                'Blank page layout with boxed content area in the middle of the page without header, footer, or sidebar.',
+                'A blank page layout with a boxed content area in the middle of the page without header, footer, or sidebar.',
                 'visualcomposer'
             ),
             'vcBlankDescription' => __(
-                'Full width blank page without header, footer, or sidebar.',
+                'A full-width blank page without header, footer, or sidebar.',
                 'visualcomposer'
             ),
             'vcDefaultDescription' => __(
-                'Default layout for the post type created in Visual Composer Theme Builder.',
+                'A default layout for the post type created in the Visual Composer Theme Builder.',
                 'visualcomposer'
             ),
             'vcThemeHeaderFooterDescription' => __(
-                'Default layout with custom header, content, and footer area.',
+                'A default layout with custom header, content, and footer area.',
                 'visualcomposer'
             ),
             'vcThemeHeaderFooterSidebarDescription' => __(
-                'Default layout with custom header, content, footer and sidebar area on the right.',
+                'A default layout with custom header, content, footer, and sidebar area on the right.',
                 'visualcomposer'
             ),
             'vcThemeHeaderFooterLeftSidebarDescription' => __(
-                'Default layout with custom header, content, footer and sidebar area on the left.',
+                'A default layout with custom header, content, footer, and sidebar area on the left.',
                 'visualcomposer'
             ),
             'availableInPremium' => __(
-                'Available in Premium version.',
+                'Available in the Premium version.',
                 'visualcomposer'
             ),
             'gutenbergDoesntWorkProperly' => __(
-                "Gutenberg plugin doesn't work properly. Please check Gutenberg plugin.",
+                "Gutenberg plugin doesn't work properly. Check the Gutenberg plugin.",
                 'visualcomposer'
             ),
             'free' => __('Free', 'visualcomposer'),
             'premium' => __('Premium', 'visualcomposer'),
             'removeAll' => __('Remove All', 'visualcomposer'),
-            'continueImport' => __('Continue import', 'visualcomposer'),
+            'continueImport' => __('Continue importing', 'visualcomposer'),
             'backToImport' => __('Back to import', 'visualcomposer'),
             'startingImportProcess' => __('Starting import process...', 'visualcomposer'),
             'backToParent' => __('Back to parent', 'visualcomposer'),
             'editorSettings' => __('Editor Settings', 'visualcomposer'),
             'clickToEditColumnValue' => __('Click to edit column value', 'visualcomposer'),
-            'addOn' => __('Add-on', 'visualcomposer'),
+            'addOn' => __('Addon', 'visualcomposer'),
             'doNotCloseWhileUpdateText' => __(
                 'Don\'t close this window while the download is in progress.',
                 'visualcomposer'
@@ -386,45 +402,39 @@ class Localizations extends Container implements Helper
             'createYourWordpressWebsite' => __('Create Your WordPress Website.', 'visualcomposer'),
             'anyLayoutFastAndEasy' => __('Any Layout. Fast and Easy.', 'visualcomposer'),
             'skipThisPostText' => __('Skip this post', 'visualcomposer'),
-            'getMoreText' => __('Get More Elements, Templates, and Extensions', 'visualcomposer'),
-            'downloadFromHubText' => __(
-                'Download additional content from the Visual Composer Hub - right in your editor instantly.',
-                'visualcomposer'
-            ),
+            'getMoreText' => __('Connect to Visual Composer Hub.', 'visualcomposer'),
+            'getMoreTextSubText' => __('Do More.', 'visualcomposer'),
+            'downloadFromHubText' => vchelper('License')->hubActivationText(),
             'getStartedText' => __('Get Started', 'visualcomposer'),
             'sendingErrorReport' => __('Sending Error Report', 'visualcomposer'),
             'doNotCloseWhileSendingErrorReportText' => __(
-                'Don\'t close this window while sending error is in progress.',
+                'Don\'t close this window while sending an error is in the process.',
                 'visualcomposer'
             ),
             'somethingWentWrong' => __('Oops ... Something Went Wrong', 'visualcomposer'),
             'goToHubButtonDescription' => __(
-                'Access Visual Composer Hub - download additional elements, templates and extensions.',
+                'Access the Visual Composer Hub - download additional elements, blocks, templates, and addons.',
                 'visualcomposer'
             ),
             'settingsGlobalTemplateCustomJsLocal' => __(
-                'Add custom JavaScript code to insert it localy on this page in <footer>. Insert Google Analytics, Tag Manager, Kissmetrics or other JavaScript code snippets.',
+                'Add custom JavaScript code to insert it locally on this page in <footer>. Insert Google Analytics, Tag Manager, Kissmetrics, or other JavaScript code snippets.',
                 'visualcomposer'
             ),
             'settingsCustomJsLocal' => __(
-                'Add custom JavaScript code to insert it localy on this page in <header> or <footer>. Insert Google Analytics, Tag Manager, Kissmetrics or other JavaScript code snippets.',
+                'Add custom JavaScript code to insert it locally on this page in <header> or <footer>. Insert Google Analytics, Tag Manager, Kissmetrics, or other JavaScript code snippets.',
                 'visualcomposer'
             ),
             'settingsCustomJsGlobal' => __(
-                'Add custom JavaScript code to insert it globally on every page in <header> or <footer>. Insert Google Analytics, Tag Manager, Kissmetrics or other JavaScript code snippets.',
+                'Add custom JavaScript code to insert it globally on every page in <header> or <footer>. Insert Google Analytics, Tag Manager, Kissmetrics, or other JavaScript code snippets.',
                 'visualcomposer'
             ),
-            'openEditForm' => __('Open Edit Form', 'visualcomposer'),
-            'unlockHub' => __(
-                'Unlock Visual Composer Hub',
-                'visualcomposer'
-            ),
+            'openEditForm' => __('Open the Edit Form', 'visualcomposer'),
             'shortcode' => __(
                 'Shortcode',
                 'visualcomposer'
             ),
             'shortcodeElementAttrDescription' => __(
-                'Copy your shortcode here with all the correct parameters. The shortcode must be installed on your WordPress site via plugin or theme.',
+                'Paste shortcode with all the parameters. The shortcode must be installed on your WordPress site via a plugin or theme.',
                 'visualcomposer'
             ),
             'activatePremium' => __(
@@ -432,7 +442,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'searchPhotosOnUnsplash' => __(
-                'Search free high-resolution photos on Unsplash',
+                'Search for free high-resolution photos on Unsplash',
                 'visualcomposer'
             ),
             'getPhotosWithPremiumText' => __(
@@ -444,19 +454,19 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'noAccessCheckLicence' => __(
-                'No access, please check your license!',
+                'No access, check your license.',
                 'visualcomposer'
             ),
             'noConnectionToUnsplash' => __(
-                'Could not connect to Unsplash Server!',
+                'Could not connect to Unsplash Server.',
                 'visualcomposer'
             ),
             'imageDownloadedToMediaLibrary' => __(
-                'Image has been downloaded to your Media Library.',
+                'The image has been downloaded to the Media Library.',
                 'visualcomposer'
             ),
             'couldNotParseData' => __(
-                'Could not parse data from server!',
+                'Could not parse data from the server.',
                 'visualcomposer'
             ),
             'small' => __(
@@ -476,7 +486,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'downloadImageFromUnsplash' => __(
-                'Download images from Unsplash to your Media Library',
+                'Download images from Unsplash to the Media Library',
                 'visualcomposer'
             ),
             'permalink' => __(
@@ -484,7 +494,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'spreadTheWordText' => __(
-                'Enjoy Visual Composer Website Builder? Let your friends know about it - spread the word.',
+                'Enjoying Visual Composer Website Builder? Let your friends know about it - spread the word.',
                 'visualcomposer'
             ),
             'dynamicFieldsOpenText' => __(
@@ -500,7 +510,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'dynamicAutocompleteDescription' => __(
-                'Select page, post, or custom post type.',
+                'Select a page, post, or custom post type as the dynamic content source.',
                 'visualcomposer'
             ),
             'dynamicAutocompleteToggleDescription' => __(
@@ -512,7 +522,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'dynamicSelectCustomField' => __(
-                'Select custom field',
+                'Select a custom field',
                 'visualcomposer'
             ),
             'dynamicContent' => __(
@@ -524,7 +534,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'activatePremiumToUnlockStockImages' => __(
-                'Activate Premium to Unlock Stock Images',
+                'Activate Premium to Unlock Unsplash',
                 'visualcomposer'
             ),
             'getAccessToTheVisualComposerHub' => __(
@@ -536,7 +546,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'themeBuilderWithHFS' => __(
-                'Theme builder with Header, Footer, and Sidebar editor',
+                'A theme builder with Header, Footer, and Sidebar editor',
                 'visualcomposer'
             ),
             'wooCommerceCompatibility' => __(
@@ -564,11 +574,11 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'unlimitedAccessToExtensions' => __(
-                'Unlimited access to the Visual Composer Hub of elements, templates, and add-ons',
+                'Unlimited access to the Visual Composer Hub of elements, templates, and addons',
                 'visualcomposer'
             ),
             'limitedAccessToExtensions' => __(
-                'Limited access to the Visual Composer Hub of elements, templates, and add-ons',
+                'Limited access to the Visual Composer Hub of elements, templates, and addons',
                 'visualcomposer'
             ),
             'iWantToGoPremium' => __(
@@ -580,7 +590,7 @@ class Localizations extends Container implements Helper
                     '%sEdit%s this %s.%s',
                     'visualcomposer'
                 ),
-                '<div class="vcv-custom-page-templates-edit-link"><a href="{link}" target="_blank">',
+                '<div class="vcv-custom-page-templates-edit-link"><a href="{link}" target="_blank" rel="noopener noreferrer">',
                 '</a>',
                 '{editLinkTitle}',
                 '</div>'
@@ -594,11 +604,11 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'elementNameAlreadyExists' => __(
-                'The element with such name already exists!',
+                'The element with such a name already exists!',
                 'visualcomposer'
             ),
             'enterPresetNameToSave' => __(
-                'Enter preset name to save your element as a preset!',
+                'Enter a preset name to save the element as a preset!',
                 'visualcomposer'
             ),
             'templateSaved' => __(
@@ -606,7 +616,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'templateHelperText' => __(
-                'Change default parameters of sections and their content to create a unique block template. The new block template will be added to your library.',
+                'Change the default parameters of the section to save it as a unique block template. The new block template will be added to your library.',
                 'visualcomposer'
             ),
             'presetRemovedText' => __(
@@ -662,7 +672,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'replacePopupTemplateText' => __(
-                'Your current popup will be replaced with the popup template.',
+                'The current popup will be replaced with the popup template.',
                 'visualcomposer'
             ),
             // Plugin deactivation popup section
@@ -738,16 +748,20 @@ class Localizations extends Container implements Helper
                 'Activate',
                 'visualcomposer'
             ),
-            'upgradeToPremium' => __(
-                'Upgrade To Premium',
+            'takeTutorialTemplate' => __(
+                'Try The Tutorial Template',
+                'visualcomposer'
+            ),
+            'createNewPage' => __(
+                'Create a new page',
                 'visualcomposer'
             ),
             'buildYourSiteWithDragAndDrop' => __(
-                'Build your site with the help of drag and drop editor straight from the frontend - it’s that easy.',
+                'Build your site with the help of the drag and drop builder straight from the frontend editor - it\'s that easy.',
                 'visualcomposer'
             ),
             'bundledInAThemeText' => __(
-                'It seems that your Visual Composer copy was bundled in a theme - use your Envato purchase key to activate Visual Composer Premium. You can also activate Visual Composer with a free or premium license.',
+                'It seems that your copy of Visual Composer was bundled in a theme - use your Envato purchase key to activate Visual Composer Premium. You can also activate Visual Composer with a free or premium license.',
                 'visualcomposer'
             ),
             'lockElementText' => __(
@@ -755,7 +769,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'url' => __(
-                'Url',
+                'URL',
                 'visualcomposer'
             ),
             'openPopup' => __(
@@ -767,15 +781,15 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'closingThePopupDescription' => __(
-                'Closing the popup option will close the current popup',
+                'Closing the popup option will close the current popup.',
                 'visualcomposer'
             ),
             'lockedElementText' => __(
-                'The element has been locked by your site Administrator',
+                'The element has been locked by your site Administrator.',
                 'visualcomposer'
             ),
             'elementsLock' => __(
-                'Elements Lock',
+                'Element lock',
                 'visualcomposer'
             ),
             'lockAllText' => __(
@@ -791,7 +805,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'lockSpecificDescriptionText' => __(
-                'You can lock/unlock specific elements under element edit window.',
+                'You can lock/unlock specific elements under the element Edit window.',
                 'visualcomposer'
             ),
             'lockAllNotificationText' => __(
@@ -819,7 +833,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'unsavedChangesText' => __(
-                'Changes you made may not be saved.',
+                'Changes may not be saved.',
                 'visualcomposer'
             ),
             'VCInsights' => __(
@@ -851,15 +865,15 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'insightsImageSizeBigDescription' => __(
-                'Your image size exceeds %s. This may impact your page performance and SEO ranking.',
+                'The image size exceeds %s. This may impact the page\'s performance and SEO ranking.',
                 'visualcomposer'
             ),
             'insightsImageAltAttributeMissingTitle' => __(
-                'Image ALT attribute is missing',
+                'The image ALT attribute is missing',
                 'visualcomposer'
             ),
             'insightsImageAltAttributeMissingDescription' => __(
-                'Missing ALT attribute for the image. This may impact your page SEO ranking.',
+                'Missing the ALT attribute for the image. This may impact the SEO ranking of the page.',
                 'visualcomposer'
             ),
             'insightsH1MissingTitle' => __(
@@ -867,7 +881,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'insightsH1MissingDescription' => __(
-                'Your page is missing H1 tag. This may impact on your SEO ranking.',
+                'The page is missing the H1 tag. This may impact the SEO ranking of the page.',
                 'visualcomposer'
             ),
             'insightsH1ExistsTitle' => __(
@@ -875,7 +889,15 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'insightsH1ExistsDescription' => __(
-                'Your page has an H1 tag. Great job!',
+                'The page has an H1 tag. Great job!',
+                'visualcomposer'
+            ),
+            'insightsMultipleH1Title' => __(
+                'More than one H1 tag found',
+                'visualcomposer'
+            ),
+            'insightsMultipleH1Description' => __(
+                'You have more than one H1 tag on your page which is bad for SEO ranking. Make sure to keep only one H1 and use lower-level headings (H2, H3, etc.) to structure your content.',
                 'visualcomposer'
             ),
             'insightsImageAltAttributeExistsTitle' => __(
@@ -899,7 +921,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'insightsNoContentOnPageDescription' => __(
-                'It seems your page has no content. Make sure to add elements or templates.',
+                'It seems this page has no content. Make sure to add elements or templates.',
                 'visualcomposer'
             ),
             'insightsNoCriticalIssuesFoundTitle' => __(
@@ -907,7 +929,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'insightsNoCriticalIssuesFoundDescription' => __(
-                'You don\'t have any critical issues on your page. Congratulations and keep up the good work!',
+                'There are no critical issues on the page. Congratulations and keep up the good work!',
                 'visualcomposer'
             ),
             'insightsNoWarningsFoundTitle' => __(
@@ -915,7 +937,7 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'insightsNoWarningsFoundDescription' => __(
-                'You don\'t have any warnings on your page. Congratulations and keep up the good work!',
+                'There are no warnings on the page. Congratulations and keep up the good work!',
                 'visualcomposer'
             ),
             'insightsParagraphLengthTitle' => __(
@@ -927,63 +949,63 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'insightsParagraphLengthDescriptionOk' => __(
-                'You set a proper length for your paragraphs. Great job!',
+                'You set a proper length for the paragraphs. Great job!',
                 'visualcomposer'
             ),
             'insightsParagraphLengthDescription150' => __(
-                'Paragraph contains more than 150 words. This may affect readability.',
+                'The paragraph contains more than 150 words. This may affect readability.',
                 'visualcomposer'
             ),
             'insightsParagraphLengthDescription200' => __(
-                'Paragraph contains more than 200 words. This may affect readability.',
+                'The paragraph contains more than 200 words. This may affect readability.',
                 'visualcomposer'
             ),
             'insightsTitleTooLong' => __(
-                'Your page title is too long',
+                'The page title is too long.',
                 'visualcomposer'
             ),
             'insightsTitleTooLong60' => __(
-                'Your page title exceeds 60 characters which are considered too long. Make sure to adjust it between 10 to 60 characters.',
+                'The page title exceeds 60 characters which are considered too long. Make sure to adjust it between 10 to 60 characters.',
                 'visualcomposer'
             ),
             'insightsTitleTooLong100' => __(
-                'Your page title contains more than 100 characters and will be cut off by search engines. Shorten your page title!',
+                'The page title contains more than 100 characters and will be cut off by search engines. Shorten your page title!',
                 'visualcomposer'
             ),
             'insightsTitleTooShort' => __(
-                'Your page title is too short',
+                'The page title is too short.',
                 'visualcomposer'
             ),
             'insightsTitleTooShortDescription' => __(
-                'Your page title is too short. Make sure to adjust the title between 10 to 60 characters.',
+                'The page title is too short. Make sure to adjust the title between 10 to 60 characters.',
                 'visualcomposer'
             ),
             'insightsTitleGood' => __(
-                'Your page title length is optimal',
+                'The page title length is optimal.',
                 'visualcomposer'
             ),
             'noIndexMetaTag' => __(
-                'It seems that your page is set to noindex directive',
+                'It seems that this page is set to "noindex" directive.',
                 'visualcomposer'
             ),
             'noIndexMetaTagDescription' => __(
-                'Using noindex will exclude your page from search results. If you have set noindex on purpose, ignore this warning.',
+                'Using "noindex" will exclude this page from search results. If you have set "noindex" on purpose, ignore this warning.',
                 'visualcomposer'
             ),
             'insightsGAMissingTitle' => __(
-                'Google Analytics Tag is missing',
+                'Google Analytics Tag is missing.',
                 'visualcomposer'
             ),
             'insightsGAMissingTitleOK' => __(
-                'Google Analytics Tag is added to your page',
+                'Google Analytics Tag is added to the page.',
                 'visualcomposer'
             ),
             'insightsGAMissingDescription' => __(
-                'It seems Google Analytics Tags is not added to your page.',
+                'It seems Google Analytics Tags is not added to the page.',
                 'visualcomposer'
             ),
             'insightsGAMissingDescriptionOK' => __(
-                'Google Analytics Tag is added to your page. Great job!',
+                'Google Analytics Tag is added to the page. Great job!',
                 'visualcomposer'
             ),
             'insightsContentLengthTitle' => __(
@@ -999,19 +1021,19 @@ class Localizations extends Container implements Helper
                 'visualcomposer'
             ),
             'noInboundLinks' => __(
-                'No internal links appear on your page',
+                'No internal links appear on the page.',
                 'visualcomposer'
             ),
             'noInboundLinksDescription' => __(
-                'You have no internal links on your site. Add some!',
+                'There are no internal links on the page. Add some!',
                 'visualcomposer'
             ),
             'noOutboundLinks' => __(
-                'No external links appear on your page',
+                'No external links appear on the page.',
                 'visualcomposer'
             ),
             'noOutboundLinksDescription' => __(
-                'You have no external links on your site. Add some!',
+                'There are no external links to the page. Add some!',
                 'visualcomposer'
             ),
             'onlyOneElementCanBeAddedToPage' => __(
@@ -1038,9 +1060,341 @@ class Localizations extends Container implements Helper
                 'Only %count %element elements can be added to the page.',
                 'visualcomposer'
             ),
-
             'contentAreaPlaceholderText' => __(
-                'This is a default WordPress content area where your post or page content will be displayed.',
+                'This is a default WordPress content area where the post or page content will be displayed.',
+                'visualcomposer'
+            ),
+            'activateHub' => __(
+                'Activate Hub',
+                'visualcomposer'
+            ),
+            'activateVisualComposerHub' => __(
+                'Activate Visual Composer Hub',
+                'visualcomposer'
+            ),
+            'makeTheFinalStep' => __(
+                'Make the final step! Enter your license key to activate Visual Composer Hub and start creating the website right away.',
+                'visualcomposer'
+            ),
+            'commentsAreaPlaceholderText' => __(
+                'Define a comments area for a post or page layout.',
+                'visualcomposer'
+            ),
+            'contentElementMissingNotification' => __(
+                'The content area is missing for your layout. Make sure to add the Content Area element to specify the place in your layout where the page or post content will be displayed.',
+                'visualcomposer'
+            ),
+            'templateContainsLimitElement' => __(
+                'The template you want to add contains %element element. You already have %element element added - remove it before adding the template.',
+                'visualcomposer'
+            ),
+            'getGiphiesWithPremiumText' => __(
+                'Download and Add Free Animated GIFs to Your Site With Visual Composer Premium',
+                'visualcomposer'
+            ),
+            'getGiphiesText' => __(
+                'Download and Add Free Animated GIFs to Your Site',
+                'visualcomposer'
+            ),
+            'noConnectionToGiphy' => __(
+                'Could not connect to Giphy Server!',
+                'visualcomposer'
+            ),
+            'discoverGifAnimationsText' => __(
+                'Discover the best GIF animations from Giphy.',
+                'visualcomposer'
+            ),
+            'downloadAnimationsFromGiphy' => __(
+                'Download animations from Giphy to your Media Library',
+                'visualcomposer'
+            ),
+            'activatePremiumToUnlockGiphy' => __(
+                'Activate Premium to Unlock Giphy Integration',
+                'visualcomposer'
+            ),
+            'gifAnimations' => __(
+                'GIF animations',
+                'visualcomposer'
+            ),
+            'gifAnimationDownloadedToMediaLibrary' => __(
+                'GIF animation has been downloaded to your Media Library.',
+                'visualcomposer'
+            ),
+            'regular' => __(
+                'Regular',
+                'visualcomposer'
+            ),
+            'full' => __(
+                'Full',
+                'visualcomposer'
+            ),
+            'poweredBy' => __(
+                'Powered by',
+                'visualcomposer'
+            ),
+            'substituteElement' => __(
+                'Substitute Element',
+                'visualcomposer'
+            ),
+            'manageYourSiteMenu' => __(
+                'Manage your site menus',
+                'visualcomposer'
+            ),
+            'viaWPAdminMenu' => __(
+                'in the WordPress dashboard.',
+                'visualcomposer'
+            ),
+            'dataCollectionHeadingText' => __(
+                'Help us make Visual Composer better',
+                'visualcomposer'
+            ),
+            'dataCollectionText' => __(
+                'Help us to improve the plugin by sharing anonymous data about Visual Composer usage. We appreciate your help!',
+                'visualcomposer'
+            ),
+            'readMoreText' => __(
+                'Read more',
+                'visualcomposer'
+            ),
+            'yesIWouldLikeToHelpText' => __(
+                'Yes, I would like to help',
+                'visualcomposer'
+            ),
+            'submit' => __(
+                'Submit',
+                'visualcomposer'
+            ),
+            'new' => __(
+                'New',
+                'visualcomposer'
+            ),
+            'elements' => __(
+                'Elements',
+                'visualcomposer'
+            ),
+            'templates' => __(
+                'Templates',
+                'visualcomposer'
+            ),
+            'getFullAccessToTheVisualComposerHub' => __(
+                'Get full access to the Visual Composer Hub',
+                'visualcomposer'
+            ),
+            'downloadAllExclusiveText' => __(
+                'Download all exclusive elements, templates, and extensions with Visual Composer Premium.',
+                'visualcomposer'
+            ),
+            'tutorialPageNotification' => __(
+                'This page can not be saved, because it is made for the demo purposes only.',
+                'visualcomposer'
+            ),
+            'reset' => __(
+                'Reset',
+                'visualcomposer'
+            ),
+            'welcome' => __(
+                'welcome',
+                'visualcomposer'
+            ),
+            'discoverVC' => __(
+                'Discover visual editor that gives everything to create a website you are proud of.',
+                'visualcomposer'
+            ),
+            'done' => __(
+                'Done',
+                'visualcomposer'
+            ),
+            'nextTip' => __(
+                'Next Tip',
+                'visualcomposer'
+            ),
+            'clickHereToSkip' => __(
+                'Click here to skip',
+                'visualcomposer'
+            ),
+            'elementControls' => __(
+                'Element Controls',
+                'visualcomposer'
+            ),
+            'quickActions' => __(
+                'Quick Actions',
+                'visualcomposer'
+            ),
+            'insights' => __(
+                'Insights',
+                'visualcomposer'
+            ),
+            'onPageSettings' => __(
+                'On-Page Settings',
+                'visualcomposer'
+            ),
+            'publishingOptions' => __(
+                'Publishing Options',
+                'visualcomposer'
+            ),
+            'thisIsYourContentLibrary' => __(
+                'This is your content library. <a href="https://visualcomposer.com/help/content-elements-structure/add-content-element/?utm_source='
+                . $source
+                . '&utm_medium=editor&utm_campaign=info&utm_content=help-guide" target="_blank" rel="noopener noreferrer">Add an element</a> by dragging or clicking on it and find templates you have created or downloaded from the <a href="https://visualcomposer.com/help/visual-composer-hub/?utm_source='
+                . $source
+                . '&utm_medium=editor&utm_campaign=info&utm_content=help-guide" target="_blank" rel="noopener noreferrer">Hub</a>.',
+                'visualcomposer'
+            ),
+            'useElementControls' => __(
+                'Use <a href="https://visualcomposer.com/help/interface/element-controls/?utm_source=' . $source
+                . '&utm_medium=editor&utm_campaign=info&utm_content=help-guide" target="_blank" rel="noopener noreferrer">element controls</a> to see your <a href="https://visualcomposer.com/help/content-elements-structure/grid-layout-row-column/?utm_source='
+                . $source
+                . '&utm_medium=editor&utm_campaign=info&utm_content=help-guide" target="_blank" rel="noopener noreferrer">layout structure</a> or modify the particular row, column, or content element.',
+                'visualcomposer'
+            ),
+            'useQuickActions' => __(
+                'Use <a href="https://visualcomposer.com/help/content-elements-structure/add-content-element/?utm_source='
+                . $source
+                . '&utm_medium=editor&utm_campaign=info&utm_content=help-guide" target="_blank" rel="noopener noreferrer">quick actions</a> at the bottom of the page to add the most popular row/column layouts and elements.',
+                'visualcomposer'
+            ),
+            'validateYourPage' => __(
+                '<a href="https://visualcomposer.com/help/visual-composer-insights-assistant/?utm_source=' . $source
+                . '&utm_medium=editor&utm_campaign=info&utm_content=help-guide" target="_blank" rel="noopener noreferrer">Validate your page</a> for SEO and performance to speed up your site and rank higher.',
+                'visualcomposer'
+            ),
+            'checkHowYourPageLooksOnDifferentDevices' => __(
+                'Check how your page looks on different devices. Select the device type to <a href="https://visualcomposer.com/help/responsive-design/?utm_source='
+                . $source
+                . '&utm_medium=editor&utm_campaign=info&utm_content=help-guide" target="_blank" rel="noopener noreferrer">preview your layout responsiveness</a>.',
+                'visualcomposer'
+            ),
+            'accessVisualComposerHub' => __(
+                'Access <a href="https://visualcomposer.com/help/visual-composer-hub/?utm_source=' . $source
+                . '&utm_medium=editor&utm_campaign=info&utm_content=help-guide" target="_blank" rel="noopener noreferrer">Visual Composer Hub</a> in-built cloud library to download additional elements, templates, addons, stock images, and more.',
+                'visualcomposer'
+            ),
+            'changeSettingsOfYourPageOrPost' => __(
+                'Change <a href="https://visualcomposer.com/help/settings/?utm_source=' . $source
+                . '&utm_medium=editor&utm_campaign=info&utm_content=help-guide" target="_blank" rel="noopener noreferrer">settings of your page or post</a>, modify the layout, control popups, add custom CSS, and Javascript.',
+                'visualcomposer'
+            ),
+            'previewSaveAndPublish' => __(
+                'Preview, save, and publish your content.',
+                'visualcomposer'
+            ),
+            'nameYourLayoutToSaveItAsATemplate' => __(
+                'Name your layout to save it as a template.',
+                'visualcomposer'
+            ),
+            'insightsIsAContentAnalysisTool' => __(
+                'Insights is a content analysis tool that helps to improve the quality, performance, and SEO ranking of the page.',
+                'visualcomposer'
+            ),
+            'VCHubIsAnOnlineLibrary' => __(
+                '<a href="https://visualcomposer.com/help/visual-composer-hub/?utm_source=' . $source
+                . '&utm_medium=editor&utm_campaign=info&utm_content=helper-point" target="_blank" rel="noopener noreferrer">Visual Composer Hub</a> is an online library where to search and download content elements, templates, add-ons, stock images, and GIFs.',
+                'visualcomposer'
+            ),
+            'useTheToggleToSwitchBetweenLightAndDarkBackground' => __(
+                'Use the toggle to switch between light and dark background while editing the text.',
+                'visualcomposer'
+            ),
+            'replaceStaticContentWithDynamicContent' => __(
+                'Replace static content with <a href="https://visualcomposer.com/help/theme-builder/dynamic-content/?utm_source='
+                . $source
+                . '&utm_medium=editor&utm_campaign=info&utm_content=helper-point" target="_blank" rel="noopener noreferrer">dynamic content</a> placeholders (WordPress default and custom fields).',
+                'visualcomposer'
+            ),
+            'useReverseStackingToggle' => __(
+                'Use Reverse stacking toggle to stack columns from right to left on mobile devices.',
+                'visualcomposer'
+            ),
+            'enableCustomResponsivness' => __(
+                'Enable custom responsiveness to control column width on different devices.',
+                'visualcomposer'
+            ),
+            'useTheShowElementToggle' => __(
+                'Use the Show element toggle to hide or show elements on all or custom devices.',
+                'visualcomposer'
+            ),
+            'manageIfTheElementAppearsOnAParticularDevice' => __(
+                'Manage if the element appears on a particular device.',
+                'visualcomposer'
+            ),
+            'chooseAnEventPerformedWhenClickingOnTheImage' => __(
+                'Choose an event performed when clicking on the image.',
+                'visualcomposer'
+            ),
+            'modifyTheDestinationLinkToThePage' => __(
+                'Modify the destination link to the page. Make sure to enable the option to set a custom permalink in WordPress Settings.',
+                'visualcomposer'
+            ),
+            'selectOrChangeTheLayoutOfThePage' => __(
+                'Select or change the layout of the page, post, or custom post type.',
+                'visualcomposer'
+            ),
+            'insertCustomJSCodeSnippets' => __(
+                'Add custom JavaScript code to insert it locally or globally on every page in header or footer. Insert Google Analytics, Tag Manager, Kissmetrics, or other JavaScript code snippets.',
+                'visualcomposer'
+            ),
+            'applyCustomCSSCode' => __(
+                'Apply custom CSS code to the whole site or to this particular page only.',
+                'visualcomposer'
+            ),
+            'toPreviewTheChangesUseTheResponsiveView' => __(
+                'To preview the changes, use the Responsive View in the navigation bar.',
+                'visualcomposer'
+            ),
+            'parentPageTitle' => __(
+                'Parent Page',
+                'visualcomposer'
+            ),
+            'aPopupContainerElementAllowsToStyle' => __(
+                'A popup container element allows to style the overall look of your popup.',
+                'visualcomposer'
+            ),
+            'marginTop' => __(
+                'Margin top',
+                'visualcomposer'
+            ),
+            'specifySpacesFromTheScreenTop' => __(
+                'Specify space (in pixels) from the screen top where element should stick.',
+                'visualcomposer'
+            ),
+            'zIndex' => __(
+                'Z-index',
+                'visualcomposer'
+            ),
+            'relateToParent' => __(
+                'Relate to parent',
+                'visualcomposer'
+            ),
+            'limitStickinessToWorkOnlyInTheParentContainer' => __(
+                'Limit stickiness to work only in the parent container.',
+                'visualcomposer'
+            ),
+            'showOnSticky' => __(
+                'Show on sticky',
+                'visualcomposer'
+            ),
+            'showOnlyWhenItBecomesSticky' => __(
+                'Show only when it becomes sticky.',
+                'visualcomposer'
+            ),
+            'author' => __(
+                'Author',
+                'visualcomposer'
+            ),
+            'discussion' => __(
+                'Discussion',
+                'visualcomposer'
+            ),
+            'allowComments' => __(
+                'Allow comments',
+                'visualcomposer'
+            ),
+            'allowPingbacks' => __(
+                'Allow trackbacks and pingbacks on this page',
+                'visualcomposer'
+            ),
+            'parallaxEffect' => __(
+                'Parallax effect',
                 'visualcomposer'
             ),
         ];

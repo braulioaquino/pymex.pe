@@ -64,6 +64,8 @@ class CustomCSSandJS_Admin {
 			'wp_ajax_ccj_permalink'      => 'wp_ajax_ccj_permalink',
 			'post_submitbox_start'       => 'post_submitbox_start',
 			'restrict_manage_posts'      => 'restrict_manage_posts',
+			'load-post.php'              => 'contextual_help',
+			'load-post-new.php'          => 'contextual_help',
 			'edit_form_before_permalink' => 'edit_form_before_permalink',
 			'before_delete_post'         => 'before_delete_post',
 		);
@@ -74,6 +76,9 @@ class CustomCSSandJS_Admin {
 		// Add some custom actions/filters
 		add_action( 'manage_custom-css-js_posts_custom_column', array( $this, 'manage_posts_columns' ), 10, 2 );
 		add_filter( 'manage_edit-custom-css-js_sortable_columns', array( $this, 'manage_edit_posts_sortable_columns' ) );
+		add_action( 'posts_orderby', array( $this, 'posts_orderby' ), 10, 2 );
+		add_action( 'posts_join_paged', array( $this, 'posts_join_paged' ), 10, 2 );
+		add_action( 'posts_where_paged', array( $this, 'posts_where_paged' ), 10, 2 );
 		add_filter( 'post_row_actions', array( $this, 'post_row_actions' ), 10, 2 );
 		add_filter( 'parse_query', array( $this, 'parse_query' ), 10 );
 
@@ -120,6 +125,9 @@ class CustomCSSandJS_Admin {
 		$cm = $a . '/codemirror';
 		$v  = CCJ_VERSION;
 
+		wp_enqueue_script( 'ccj-tipsy', $a . '/jquery.tipsy.js', array( 'jquery' ), $v, false );
+		wp_enqueue_style( 'ccj-tipsy', $a . '/tipsy.css', array(), $v );
+		wp_enqueue_script( 'ccj-cookie', $a . '/js.cookie.js', array( 'jquery' ), $v, false );
 		wp_register_script( 'ccj-admin', $a . '/ccj_admin.js', array( 'jquery', 'jquery-ui-resizable' ), $v, false );
 		wp_localize_script( 'ccj-admin', 'CCJ', $this->cm_localize() );
 		wp_enqueue_script( 'ccj-admin' );
@@ -148,7 +156,19 @@ class CustomCSSandJS_Admin {
 			wp_enqueue_script( 'cm-search', $cma . 'search/search.js', array( 'ccj-codemirror' ), $v, false );
 			wp_enqueue_script( 'cm-searchcursor', $cma . 'search/searchcursor.js', array( 'ccj-codemirror' ), $v, false );
 			wp_enqueue_script( 'cm-jump-to-line', $cma . 'search/jump-to-line.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_script( 'ccj-fullscreen', $cma . 'display/fullscreen.js', array( 'ccj-codemirror' ), $v, false );
 			wp_enqueue_style( 'cm-dialog', $cma . 'dialog/dialog.css', array(), $v );
+			wp_enqueue_script( 'ccj-formatting', $cm . '/lib/util/formatting.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_script( 'ccj-comment', $cma . 'comment/comment.js', array( 'ccj-codemirror' ), $v, false );
+
+			// Hint Addons
+			wp_enqueue_script( 'ccj-hint', $cma . 'hint/show-hint.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_script( 'ccj-hint-js', $cma . 'hint/javascript-hint.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_script( 'ccj-hint-xml', $cma . 'hint/xml-hint.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_script( 'ccj-hint-html', $cma . 'hint/html-hint.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_script( 'ccj-hint-css', $cma . 'hint/css-hint.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_script( 'ccj-hint-anyword', $cma . 'hint/anyword-hint.js', array( 'ccj-codemirror' ), $v, false );
+			wp_enqueue_style( 'ccj-hint', $cma . 'hint/show-hint.css', array(), $v );
 
 			// remove the assets from other plugins so it doesn't interfere with CodeMirror
 			global $wp_scripts;
@@ -161,11 +181,16 @@ class CustomCSSandJS_Admin {
 					if ( strstr( $_value->src, 'wp-content/plugins' ) !== false
 					&& strstr( $_value->src, 'plugins/custom-css-js/assets' ) === false
 					&& strstr( $_value->src, 'plugins/advanced-custom-fields/' ) === false
+					&& strstr( $_value->src, 'plugins/wp-jquery-update-test/' ) === false
+					&& strstr( $_value->src, 'plugins/enable-jquery-migrate-helper/' ) === false
 					&& strstr( $_value->src, 'plugins/advanced-custom-fields-pro/' ) === false ) {
 						unset( $wp_scripts->registered[ $_key ] );
 					}
 				}
 			}
+			// remove the CodeMirror library added by the Product Slider for WooCommerce plugin by ShapedPlugin
+			wp_enqueue_style( 'spwps-codemirror', $a . '/empty.css', '1.0' );
+			wp_enqueue_script( 'spwps-codemirror', $a . '/empty.js', array(), '1.0', true );
 		}
 	}
 
@@ -175,7 +200,10 @@ class CustomCSSandJS_Admin {
 	 */
 	public function cm_localize() {
 
+		$settings = get_option( 'ccj_settings' );
+
 		$vars = array(
+			'autocomplete'   => isset( $settings['ccj_autocomplete'] ) && ! $settings['ccj_autocomplete'] ? false : true,
 			'active'         => __( 'Active', 'custom-css-js' ),
 			'inactive'       => __( 'Inactive', 'custom-css-js' ),
 			'activate'       => __( 'Activate', 'custom-css-js' ),
@@ -326,6 +354,8 @@ class CustomCSSandJS_Admin {
 	 * Make the 'Modified' column sortable
 	 */
 	function manage_edit_posts_sortable_columns( $columns ) {
+		$columns['active']    = 'active';
+		$columns['type']      = 'type';
 		$columns['modified']  = 'modified';
 		$columns['published'] = 'published';
 		return $columns;
@@ -337,6 +367,7 @@ class CustomCSSandJS_Admin {
 	 * List table: Change the query in order to filter by code type
 	 */
 	function parse_query( $query ) {
+		global $wpdb;
 		if ( ! is_admin() || ! $query->is_main_query() ) {
 			return $query;
 		}
@@ -353,10 +384,10 @@ class CustomCSSandJS_Admin {
 		if ( ! is_string( $filter ) || strlen( $filter ) == 0 ) {
 			return $query;
 		}
+		$filter = '%' . $wpdb->esc_like( $filter ) . '%';
 
-		global $wpdb;
 		$post_id_query = "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = %s AND meta_value LIKE %s";
-		$post_ids      = $wpdb->get_col( $wpdb->prepare( $post_id_query, 'options', '%' . $filter . '%' ) );
+		$post_ids      = $wpdb->get_col( $wpdb->prepare( $post_id_query, 'options', $filter ) );
 		if ( ! is_array( $post_ids ) || count( $post_ids ) == 0 ) {
 			$post_ids = array( -1 );
 		}
@@ -392,6 +423,61 @@ class CustomCSSandJS_Admin {
 
 
 	/**
+	 * Order table by Type and Active columns
+	 */
+	function posts_orderby( $orderby, $query ) {
+		if ( ! is_admin() ) {
+			return $orderby;
+		}
+		global $wpdb;
+
+		if ( 'custom-css-js' === $query->get( 'post_type' ) && 'type' === $query->get( 'orderby' ) ) {
+			$orderby = "REGEXP_SUBSTR( {$wpdb->prefix}postmeta.meta_value, 'js|html|css') " . $query->get( 'order' );
+		}
+		if ( 'custom-css-js' === $query->get( 'post_type' ) && 'active' === $query->get( 'orderby' ) ) {
+			$orderby = "coalesce( postmeta1.meta_value, 'p' ) " . $query->get( 'order' );
+		}
+		return $orderby;
+	}
+
+
+	/**
+	 * Order table by Type and Active columns
+	 */
+	function posts_join_paged( $join, $query ) {
+		if ( ! is_admin() ) {
+			return $join;
+		}
+		global $wpdb;
+
+		if ( 'custom-css-js' === $query->get( 'post_type' ) && 'type' === $query->get( 'orderby' ) ) {
+			$join = "LEFT JOIN {$wpdb->prefix}postmeta ON {$wpdb->prefix}posts.ID = {$wpdb->prefix}postmeta.post_id";
+		}
+
+		if ( 'custom-css-js' === $query->get( 'post_type' ) && 'active' === $query->get( 'orderby' ) ) {
+			$join = "LEFT JOIN (SELECT post_id AS ID, meta_value FROM {$wpdb->prefix}postmeta WHERE meta_key = '_active' ) as postmeta1 USING( ID )";
+		}
+		return $join;
+	}
+
+
+	/**
+	 * Order table by Type and Active columns
+	 */
+	function posts_where_paged( $where, $query ) {
+		if ( ! is_admin() ) {
+			return $where;
+		}
+		global $wpdb;
+
+		if ( 'custom-css-js' === $query->get( 'post_type' ) && 'type' === $query->get( 'orderby' ) ) {
+			$where .= " AND {$wpdb->prefix}postmeta.meta_key = 'options'";
+		}
+		return $where;
+	}
+
+
+	/**
 	 * Activate/deactivate a code
 	 *
 	 * @return void
@@ -408,16 +494,13 @@ class CustomCSSandJS_Admin {
 
 			if ( 'custom-css-js' === get_post_type( $code_id ) ) {
 				$active = get_post_meta( $code_id, '_active', true );
-				if ( $active === false || $active === '' ) {
-					$active = 'yes';
-				}
-				$response = $active;
-				update_post_meta( $code_id, '_active', $active === 'yes' ? 'no' : 'yes' );
+				$active = ( $active !== 'no' ) ? $active = 'yes' : 'no';
 
+				update_post_meta( $code_id, '_active', $active === 'yes' ? 'no' : 'yes' );
 				$this->build_search_tree();
 			}
 		}
-		echo $response;
+		echo $active;
 
 		die();
 	}
@@ -678,6 +761,15 @@ End of comment */ ',
 		?>
 			  <form style="position: relative; margin-top: .5em;">
 
+				<div class="code-mirror-buttons">
+				<div class="button-left"><span rel="tipsy" original-title="<?php _e( 'Beautify Code', 'custom-css-js-pro' ); ?>"><button type="button" tabindex="-1" id="ccj-beautifier"><i class="ccj-i-beautifier"></i></button></span></div>
+				<!--div class="button-left"><span rel="tipsy" original-title="<?php _e( 'Editor Settings', 'custom-css-js-pro' ); ?>"><button type="button" tabindex="-1" id="ccj-settings"><i class="ccj-i-settings"></i></button></span></div -->
+				<div class="button-right" id="ccj-fullscreen-button" alt="<?php _e( 'Distraction-free writing mode', 'custom-css-js-pro' ); ?>"><span rel="tipsy" original-title="<?php _e( 'Fullscreen', 'custom-css-js-pro' ); ?>"><button role="presentation" type="button" tabindex="-1"><i class="ccj-i-fullscreen"></i></button></span></div>
+<input type="hidden" name="fullscreen" id="ccj-fullscreen-hidden" value="false" />
+<!-- div class="button-right" id="ccj-search-button" alt="Search"><button role="presentation" type="button" tabindex="-1"><i class="ccj-i-find"></i></button></div -->
+
+				</div>
+
 				<div class="code-mirror-before"><div><?php echo htmlentities( $code_mirror_before ); ?></div></div>
 				<textarea class="wp-editor-area" id="ccj_content" mode="<?php echo htmlentities( $code_mirror_mode ); ?>" name="content"><?php echo $post->post_content; ?></textarea>
 				<div class="code-mirror-after"><div><?php echo htmlentities( $code_mirror_after ); ?></div></div>
@@ -843,11 +935,11 @@ End of comment */ ',
 					'none' => array(
 						'title' => __( 'None', 'custom-css-js' ),
 					),
+					'sass' => array(
+						'title' => __( 'Sass (only SCSS syntax)', 'custom-css-js' ),
+					),
 					'less' => array(
 						'title' => __( 'Less', 'custom-css-js' ),
-					),
-					'sass' => array(
-						'title' => __( 'SASS (only SCSS syntax)', 'custom-css-js' ),
 					),
 				),
 				'disabled' => true,
@@ -1019,8 +1111,10 @@ End of comment */ ',
 		}
 
 		foreach ( $defaults as $_field => $_default ) {
-			$options[ $_field ] = isset( $_POST[ 'custom_code_' . $_field ] ) ? esc_attr( $_POST[ 'custom_code_' . $_field ] ) : $_default;
+			$options[ $_field ] = isset( $_POST[ 'custom_code_' . $_field ] ) ? esc_attr( strtolower( $_POST[ 'custom_code_' . $_field ] ) ) : $_default;
 		}
+
+		$options['language'] = in_array( $options['language'], array( 'html', 'css', 'js' ), true ) ? $options['language'] : $defaults['language'];
 
 		update_post_meta( $post_id, 'options', $options );
 
@@ -1065,6 +1159,7 @@ End of comment */ ',
 			$before = '/******* Do not edit this file *******' . PHP_EOL .
 			'Simple Custom CSS and JS - by Silkypress.com' . PHP_EOL .
 			'Saved: ' . date( 'M d Y | H:i:s' ) . ' */' . PHP_EOL;
+			$after  = '';
 		}
 
 		if ( wp_is_writable( CCJ_UPLOAD_DIR ) ) {
@@ -1075,7 +1170,7 @@ End of comment */ ',
 			// save the file as the Permalink slug
 			$slug = get_post_meta( $post_id, '_slug', true );
 			if ( $slug ) {
-				@file_put_contents( CCJ_UPLOAD_DIR . '/' . $slug . '.' . $options['language'], $file_content );
+				@file_put_contents( CCJ_UPLOAD_DIR . '/' . sanitize_file_name( $slug ) . '.' . $options['language'], $file_content );
 			}
 		}
 
@@ -1163,6 +1258,14 @@ endif;
 
 			// Add the code file to the tree branch
 			$tree[ $tree_branch ][] = $filename;
+
+			// Mark to enqueue the jQuery library, if necessary
+			if ( $options['language'] === 'js' ) {
+				$_post->post_content = preg_replace( '@/\* Add your JavaScript code here[\s\S]*?End of comment \*/@im', '/* Default comment here */', $_post->post_content );
+				if ( preg_match( '/jquery\s*(\(|\.)/i', $_post->post_content ) && ! isset( $tree['jquery'] ) ) {
+					$tree['jquery'] = true;
+				}
+			}
 
 		}
 
@@ -1386,6 +1489,33 @@ endif;
 
 
 	/**
+	 * Show contextual help for the Custom Code edit page
+	 */
+	public function contextual_help() {
+		$screen = get_current_screen();
+
+		if ( $screen->id != 'custom-css-js' ) {
+			return;
+		}
+
+		$screen->add_help_tab(
+			array(
+				'id'      => 'ccj-editor_shortcuts',
+				'title'   => __( 'Editor Shortcuts', 'custom-css-js-pro' ),
+				'content' =>
+							  '<p><table>
+            <tr><td><strong>Auto Complete</strong></td><td> <code>Ctrl</code> + <code>Space</code></td></tr>
+            <tr><td><strong>Find</strong></td><td> <code>Ctrl</code> + <code>F</code></td></tr>
+            <tr><td><strong>Replace</strong></td><td> <code>Shift</code> + <code>Ctrl</code> + <code>F</code></td></tr>
+            <tr><td><strong>Comment line/block</strong></td><td> <code>Ctrl</code> + <code>/</code></td></tr>
+            </table></p>',
+			)
+		);
+
+	}
+
+
+	/**
 	 * Remove the JS/CSS file from the disk when deleting the post
 	 */
 	function before_delete_post( $postid ) {
@@ -1400,8 +1530,13 @@ endif;
 			return;
 		}
 
-		$options   = get_post_meta( $postid, 'options', true );
-		$slug      = get_post_meta( $postid, '_slug', true );
+		$options             = get_post_meta( $postid, 'options', true );
+		$options['language'] = strtolower( $options['language'] );
+		$options['language'] = in_array( $options['language'], array( 'html', 'js', 'css' ), true ) ? $options['language'] : 'css';
+
+		$slug = get_post_meta( $postid, '_slug', true );
+		$slug = sanitize_file_name( $slug );
+
 		$file_name = $postid . '.' . $options['language'];
 
 		@unlink( CCJ_UPLOAD_DIR . '/' . $file_name );

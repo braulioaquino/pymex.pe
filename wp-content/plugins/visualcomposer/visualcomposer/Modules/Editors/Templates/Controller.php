@@ -169,6 +169,13 @@ class Controller extends Container implements Module
         if ($currentUserHelper->wpAll(['edit_posts', $id])) {
             $template = $editorTemplatesHelper->read($id);
             if ($template) {
+                $optionsHelper = vchelper('Options');
+                $isAllowed = $optionsHelper->get('settings-itemdatacollection-enabled', false);
+                if ($isAllowed) {
+                    $sourceId = $requestHelper->input('vcv-source-id');
+                    vcevent('vcv:saveTemplateUsage', ['response' => [], 'payload' => ['sourceId' => $sourceId, 'templateId' => $id]]);
+                }
+
                 return $template;
             }
         }

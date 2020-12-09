@@ -23,6 +23,8 @@ class TemplatesUpdater extends Container implements Module
 
     protected $importedImages = [];
 
+    protected $templatePostType;
+
     /** @noinspection PhpMissingParentConstructorInspection */
     public function __construct()
     {
@@ -82,18 +84,21 @@ class TemplatesUpdater extends Container implements Module
             }
         }
 
+        $this->templatePostType = isset($payload['actionData']['action']) && $payload['actionData']['action'] === 'template/tutorial' ? 'vcv_tutorials' : 'vcv_templates';
+        $template['name'] = $this->templatePostType === 'vcv_tutorials' ? 'Tutorial Page' : $payload['actionData']['data']['name'];
+        $templateElements = $template['data'];
         $templateMeta = $this->processTemplateMetaImages(
             [
                 'id' => $template['id'],
-                'preview' => $payload['actionData']['data']['preview'],
-                'thumbnail' => $payload['actionData']['data']['thumbnail'],
+                'preview' => $this->templatePostType === 'vcv_tutorials' ? '' : $payload['actionData']['data']['preview'],
+                'thumbnail' => $this->templatePostType === 'vcv_tutorials' ? '' : $payload['actionData']['data']['thumbnail'],
             ]
         );
-        $template['name'] = $payload['actionData']['data']['name'];
-        $templateElements = $template['data'];
-        $elementsImages = $wpMediaHelper->getTemplateElementMedia($templateElements);
-        $templateElements = $this->processTemplateImages($elementsImages, $template, $templateElements);
-        $templateElements = $this->processDesignOptions($templateElements, $template);
+        if ($this->templatePostType !== 'vcv_tutorials') {
+            $elementsImages = $wpMediaHelper->getTemplateElementMedia($templateElements);
+            $templateElements = $this->processTemplateImages($elementsImages, $template, $templateElements);
+            $templateElements = $this->processDesignOptions($templateElements, $template);
+        }
         // Check if menu source is exist or not
         $templateElements = $this->isMenuExist($templateElements);
         $templateElements = json_decode(
@@ -108,7 +113,7 @@ class TemplatesUpdater extends Container implements Module
 
         $savedTemplates = new WP_Query(
             [
-                'post_type' => 'vcv_templates',
+                'post_type' => $this->templatePostType,
                 'meta_query' => [
                     [
                         'key' => '_' . VCV_PREFIX . 'id',
@@ -128,7 +133,7 @@ class TemplatesUpdater extends Container implements Module
             $templateId = wp_insert_post(
                 [
                     'post_title' => $template['name'],
-                    'post_type' => 'vcv_templates',
+                    'post_type' => $this->templatePostType,
                     'post_status' => 'publish',
                 ]
             );
@@ -140,7 +145,7 @@ class TemplatesUpdater extends Container implements Module
                 [
                     'ID' => $templateId,
                     'post_title' => $payload['actionData']['data']['name'],
-                    'post_type' => 'vcv_templates',
+                    'post_type' => $this->templatePostType,
                     'post_status' => 'publish',
                 ]
             );
@@ -155,13 +160,7 @@ class TemplatesUpdater extends Container implements Module
             $type = 'hub';
         }
 
-        update_post_meta($templateId, '_' . VCV_PREFIX . 'description', $template['description']);
-        update_post_meta($templateId, '_' . VCV_PREFIX . 'type', $type);
-        update_post_meta($templateId, '_' . VCV_PREFIX . 'thumbnail', $template['thumbnail']);
-        update_post_meta($templateId, '_' . VCV_PREFIX . 'preview', $template['preview']);
-        update_post_meta($templateId, '_' . VCV_PREFIX . 'id', $template['id']);
-        update_post_meta($templateId, '_' . VCV_PREFIX . 'bundle', $payload['actionData']['action']);
-        update_post_meta($templateId, 'vcvEditorTemplateElements', $templateElements);
+        $this->updatePostMetas($templateId, $template, $type, $payload, $templateElements);
 
         $response['templates'][] = [
             'id' => $templateId,
@@ -180,6 +179,44 @@ class TemplatesUpdater extends Container implements Module
         ];
 
         return $response;
+    }
+
+    /**
+     * Update post metas for template
+     *
+     * @param $templateId
+     * @param $template
+     * @param $type
+     * @param $payload
+     * @param $templateElements
+     */
+    protected function updatePostMetas($templateId, $template, $type, $payload, $templateElements)
+    {
+        update_post_meta($templateId, '_' . VCV_PREFIX . 'description', $template['description']);
+        update_post_meta($templateId, '_' . VCV_PREFIX . 'type', $type);
+        update_post_meta($templateId, '_' . VCV_PREFIX . 'thumbnail', $template['thumbnail']);
+        update_post_meta($templateId, '_' . VCV_PREFIX . 'preview', $template['preview']);
+        update_post_meta($templateId, '_' . VCV_PREFIX . 'id', $template['id']);
+        update_post_meta($templateId, '_' . VCV_PREFIX . 'bundle', $payload['actionData']['action']);
+        update_post_meta($templateId, 'vcvEditorTemplateElements', $templateElements);
+
+        if ($this->templatePostType === 'vcv_tutorials') {
+            if (isset($template['postMeta']['vcvSourceCss'][0])) {
+                update_post_meta(
+                    $templateId,
+                    'vcvSourceCss',
+                    $template['postMeta']['vcvSourceCss'][0]
+                );
+            }
+
+            if (isset($template['postMeta']['vcvSettingsSourceCustomCss'][0])) {
+                update_post_meta(
+                    $templateId,
+                    'vcvSettingsSourceCustomCss',
+                    $template['postMeta']['vcvSettingsSourceCustomCss'][0]
+                );
+            }
+        }
     }
 
     /**

@@ -85,6 +85,16 @@ class VariablesController extends Container implements Module
             'key' => 'vcvManageOptions',
             'value' => vchelper('AccessCurrentUser')->wpAll('manage_options')->get(),
         ];
+        $variables[] = [
+            'key' => 'vcvCreateMenuUrl',
+            'value' => set_url_scheme(admin_url('nav-menus.php?action=edit&menu=0')),
+            'type' => 'variable',
+        ];
+        $variables[] = [
+            'key' => 'vcvManageMenuUrl',
+            'value' => set_url_scheme(admin_url('nav-menus.php')),
+            'type' => 'variable',
+        ];
 
         return $variables;
     }
@@ -102,7 +112,7 @@ class VariablesController extends Container implements Module
 
             $sourceId = $payload['sourceId'];
 
-            $feError = intval(get_option('page_for_posts')) === $sourceId ? 'page_for_posts' : false;
+            $feError = (int)get_option('page_for_posts') === $sourceId ? 'page_for_posts' : false;
             $variables[] = [
                 'key' => 'vcvFeError',
                 'value' => $feError,

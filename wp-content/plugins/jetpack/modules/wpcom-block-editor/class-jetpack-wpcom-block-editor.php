@@ -40,6 +40,9 @@ class Jetpack_WPCOM_Block_Editor {
 			add_filter( 'admin_body_class', array( $this, 'add_iframed_body_class' ) );
 		}
 
+		require_once __DIR__ . '/functions.editor-type.php';
+		add_action( 'edit_form_top', 'Jetpack\EditorType\remember_classic_editor' );
+		add_filter( 'block_editor_settings', 'Jetpack\EditorType\remember_block_editor', 10, 2 );
 		add_action( 'login_init', array( $this, 'allow_block_editor_login' ), 1 );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ), 9 );
 		add_action( 'enqueue_block_assets', array( $this, 'enqueue_block_assets' ) );
@@ -61,7 +64,7 @@ class Jetpack_WPCOM_Block_Editor {
 	}
 
 	/**
-	 * Prevents frame options header from firing if this is a whitelisted iframe request.
+	 * Prevents frame options header from firing if this is a allowed iframe request.
 	 */
 	public function disable_send_frame_options_header() {
 		// phpcs:ignore WordPress.Security.NonceVerification
@@ -71,7 +74,7 @@ class Jetpack_WPCOM_Block_Editor {
 	}
 
 	/**
-	 * Adds custom admin body class if this is a whitelisted iframe request.
+	 * Adds custom admin body class if this is a allowed iframe request.
 	 *
 	 * @param string $classes Admin body classes.
 	 * @return string
@@ -86,6 +89,25 @@ class Jetpack_WPCOM_Block_Editor {
 	}
 
 	/**
+	 * Checks to see if cookie can be set in current context. If 3rd party cookie blocking
+	 * is enabled the editor can't load in iFrame, so emiting X-Frame-Options: DENY will
+	 * force the editor to break out of the iFrame.
+	 */
+	private function check_iframe_cookie_setting() {
+		if ( ! isset( $_SERVER['QUERY_STRING'] ) || ! strpos( $_SERVER['QUERY_STRING'], 'calypsoify%3D1%26block-editor' ) || isset( $_COOKIE['wordpress_test_cookie'] ) ) {
+			return;
+		}
+
+		if ( empty( $_GET['calypsoify_cookie_check'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			header( 'Location: ' . esc_url_raw( $_SERVER['REQUEST_URI'] . '&calypsoify_cookie_check=true' ) );
+			exit;
+		}
+
+		header( 'X-Frame-Options: DENY' );
+		exit;
+	}
+
+	/**
 	 * Allows to iframe the login page if a user is logged out
 	 * while trying to access the block editor from wordpress.com.
 	 */
@@ -94,6 +116,8 @@ class Jetpack_WPCOM_Block_Editor {
 		if ( empty( $_REQUEST['redirect_to'] ) ) {
 			return;
 		}
+
+		$this->check_iframe_cookie_setting();
 
 		// phpcs:ignore WordPress.Security.NonceVerification
 		$query = wp_parse_url( urldecode( $_REQUEST['redirect_to'] ), PHP_URL_QUERY );
@@ -159,7 +183,7 @@ class Jetpack_WPCOM_Block_Editor {
 	}
 
 	/**
-	 * Checks whether this is a whitelisted iframe request.
+	 * Checks whether this is an allowed iframe request.
 	 *
 	 * @param string $nonce Nonce to verify.
 	 * @return bool
@@ -269,6 +293,7 @@ class Jetpack_WPCOM_Block_Editor {
 			array(
 				'jquery',
 				'lodash',
+				'wp-annotations',
 				'wp-compose',
 				'wp-data',
 				'wp-editor',
@@ -283,11 +308,6 @@ class Jetpack_WPCOM_Block_Editor {
 			'wpcom-block-editor-default-editor-script',
 			'wpcomGutenberg',
 			array(
-				'switchToClassic' => array(
-					'isVisible' => $this->is_iframed_block_editor(),
-					'label'     => __( 'Switch to Classic Editor', 'jetpack' ),
-					'url'       => Jetpack_Calypsoify::getInstance()->get_switch_to_classic_editor_url(),
-				),
 				'richTextToolbar' => array(
 					'justify'   => __( 'Justify', 'jetpack' ),
 					'underline' => __( 'Underline', 'jetpack' ),
