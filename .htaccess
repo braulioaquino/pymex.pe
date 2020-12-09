@@ -178,6 +178,14 @@ RewriteRule . /index.php [L]
 </IfModule>
 # END W3TC Page Cache core
 
+
+# BEGIN rlrssslReallySimpleSSL rsssl_version[4.0.5]
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{HTTPS} !=on [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+# END rlrssslReallySimpleSSL
 # BEGIN WordPress
 # Las directivas (líneas) entre «BEGIN WordPress» y «END WordPress» son
 # generadas dinámicamente y solo deberían ser modificadas mediante filtros de WordPress.
