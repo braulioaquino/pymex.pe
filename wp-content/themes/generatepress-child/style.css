@@ -7,4 +7,20 @@
  Template:     generatepress
  Version:      0.1
 */
-
+.paging-navigation .nav-links {
+    text-align: center;
+}
+.paging-navigation .page-numbers {
+    padding: 4px 6px !important;
+    background-color: #1e72bd;
+    border-radius: 4px;
+    color: #fff !important;
+    border: 2px solid #1e72bd;
+    margin-right: 0.25em;
+    font-size: 16px;
+}
+.paging-navigation .page-numbers:hover,
+.paging-navigation .page-numbers.current {
+    background-color: #fff;
+    color: #1e72bd !important;
+}
