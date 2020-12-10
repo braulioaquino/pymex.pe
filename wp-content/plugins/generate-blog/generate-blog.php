@@ -1,9 +1,9 @@
 <?php
-/*
-Add-on Name: Generate Blog
-Author: Thomas Usborne
-Author URI: http://edge22.com
-*/
+/**
+ * Plugin Name: GP Blog
+ * Plugin URI: https://pymex.com
+ * Description: Addon de blog para Generate Press
+ */
 
 // No direct access, please
 if ( ! defined( 'ABSPATH' ) ) exit;
