@@ -1,6 +1,8 @@
 /**
- * Scripts for the settings screen in wp-admin.
- * @package advanced-editor-tools
+ * This file is part of the TinyMCE Advanced WordPress plugin and is released under the same license.
+ * For more information please see tinymce-advanced.php.
+ *
+ * Copyright (c) 2007-2019 Andrew Ozz. All rights reserved.
  */
 
 jQuery( document ).ready( function( $ ) {
