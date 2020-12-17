@@ -1,4 +1,13 @@
 <?php
+/** Enable W3 Total Cache */
+define('WP_CACHE', true); // Added by W3 Total Cache
+
+/** Enable W3 Total Cache */
+
+
+/** Enable W3 Total Cache */
+ // Added by WP Hummingbird
+
 /**
  * The base configuration for WordPress
  *
@@ -20,10 +29,10 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'wordpress' );
+define( 'DB_NAME', 'wordpressbrau' );
 
 /** MySQL database username */
-define( 'DB_USER', 'wordpress' );
+define( 'DB_USER', 'wordpressbrau' );
 
 /** MySQL database password */
 define( 'DB_PASSWORD', '964d693d6f92c38ab5b921dfa1442a19f8169376cd0c54de' );
@@ -65,6 +74,9 @@ define('NONCE_SALT', 'eb86b8f1c13ec7fb30786eccdbb87eccf6a865c6d1d41de042b2921173
  */
 $table_prefix = 'wp_';
 
+define( 'FORCE_SSL_LOGIN', 1 );
+define( 'FORCE_SSL_ADMIN', 1 );
+
 /**
  * For developers: WordPress debugging mode.
  *
@@ -77,16 +89,55 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', false );
+ define('WP_DEBUG', false);
+ define('WP_DEBUG_LOG', true);
 
 /* That's all, stop editing! Happy publishing. */
 
+/**
+ * The WP_SITEURL and WP_HOME options are configured to access from any hostname or IP address.
+ * If you want to access only from an specific domain, you can modify them. For example:
+ *  define('WP_HOME','https://example.com');
+ *  define('WP_SITEURL','https://example.com');
+ *
+*/
+
+#define('WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST'] . '/');
+#define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST'] . '/');
+
+define('WP_SITEURL','https://xyz.pymex.com');
+define('WP_HOME','https://xyz.pymex.com');
+
+
 /** Absolute path to the WordPress directory. */
-if ( ! defined( 'ABSPATH' ) ) {
-	define( 'ABSPATH', __DIR__ . '/' );
-}
+if ( !defined('ABSPATH') )
+	define('ABSPATH', dirname(__FILE__) . '/');
 
 /** Sets up WordPress vars and included files. */
-require_once ABSPATH . 'wp-settings.php';
+require_once(ABSPATH . 'wp-settings.php');
+
+define('WP_TEMP_DIR', '/tmp');
+
 
 define('FS_METHOD', 'direct');
+
+
+//  Disable pingback.ping xmlrpc method to prevent Wordpress from participating in DDoS attacks
+//  More info at: https://docs.bitnami.com/?page=apps&name=wordpress&section=how-to-re-enable-the-xml-rpc-pingback-feature
+
+// remove x-pingback HTTP header
+
+//add_filter('wp_headers', function($headers) {
+//    unset($headers['X-Pingback']);
+//    return $headers;
+//});
+// disable pingbacks
+//add_filter( 'xmlrpc_methods', function( $methods ) {
+//        unset( $methods['pingback.ping'] );
+//        return $methods;
+//});
+//add_filter( 'auto_update_translation', '__return_false' );
+
+define( 'WP_POST_REVISIONS', 2 );
+define( 'WP_ALLOW_REPAIR', true );
+define( 'AUTOSAVE_INTERVAL', 160 ); // Seconds
