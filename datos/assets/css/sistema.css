@@ -1,0 +1,1647 @@
+body, html, *, h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+    font-family: "Museo300";
+}
+.mi-navbar {
+    margin-bottom: 0!important;
+    border-radius: 0px;
+    border-color: #F5F5FA;
+    background-color: #F5F5FA;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.mi-navbar .mi-navbar-header a {
+    color: #57B084;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    opacity: 0.9;
+    transition: all 0.3s;
+    letter-spacing: 2px;
+    font-family: "Museo900";
+}
+.mi-navbar .mi-navbar-header a:hover, .mi-navbar .mi-navbar-header a:active, .mi-navbar .mi-navbar-header a:focus {
+    color: #57B084;
+    opacity: 1;
+}
+
+
+/* The element to hover over */
+.qs {
+    background: -webkit-linear-gradient(top, #7AB761, #009A7C, #009EB0);
+    background: linear-gradient(top, #7AB761, #009A7C, #009EB0);
+    border-radius: 16px;
+    color: #e3fbff !important;
+    cursor: default;
+    display: inline-block;
+    font-family: 'Helvetica',sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    height: 25px;
+    line-height: 25px;
+    position: relative;
+    text-align: center;
+    width: 25px;
+  }
+  
+  .popover {
+      
+      -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+      color: #999;
+  }
+.imgheead{
+    height: 92px; 
+    width: 92px; 
+    border-radius: 10em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+     box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+   }
+.mi-collapse .mi-nav-derecho li a {
+    color: #57B084;
+    opacity: 0.9;
+    transition: all 0.3s;
+    font-weight: bold;
+    font-size: 14px;
+}
+.mi-collapse .mi-nav-derecho li a:hover, .mi-collapse .mi-nav-derecho li a:active, .mi-collapse .mi-nav-derecho li a:focus {
+    color: #57B084;
+    opacity: 1;
+}
+.mi-collapse .mi-nav-derecho li.submenu a:hover {
+    color: #57B084;
+}
+.mi-navbar .mi-nav-derecho>.open>a, .mi-navbar .mi-nav-derecho>.open>a:focus, .mi-navbar .mi-nav-derecho>.open>a:hover {
+    color: #57B084;
+    background-color: #F5F5FA;
+}
+.sub-menu .sub-menu-items li a {
+    padding: 12px 20px;
+    color: #999;
+}
+.sub-menu .sub-menu-items {
+    padding: 0px 0px;
+}
+/*fin menu header*/
+
+.estado-aviso-btn{
+    background: #7aba6f;
+    border-radius: 3em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.estado-aviso-btn-inactivo{
+    background: #e91e63;
+    border-radius: 3em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);    
+}
+.destacado-aviso-btn {
+    background: #d1c012;
+    color:white;
+    border-radius: 3em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.normal-aviso-btn {
+    background: #ececec;
+    /*border: 1px solid #c5c5c5;*/
+    border-radius: 3em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+/*footer de la pagina*/
+
+.secciones-color .titulos h2 {
+    padding: 10px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Museo900";
+    letter-spacing: 2px;
+}
+.secciones-color .linea-divisora {
+    margin: 4% auto;
+    border-bottom: 1px solid #ffffff;
+    width: 70%;
+}
+.secciones-color {
+    padding: 5% 0px;
+}
+.pie {
+    /*background-color: #57B084;*/
+    background: -webkit-linear-gradient(left, #7AB761, #009A7C, #009EB0);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #7AB761, #009A7C, #009EB0);
+    /* Standard syntax */
+}
+.redes, .politicas {
+    color: #fff;
+    text-align: center;
+}
+.redes p {
+    padding: 10px;
+    font-family: "Museo500";
+}
+.redes .icons {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+.politicas ul li {
+    list-style: none;
+    display: inline-flex;
+    /*padding-right: 15px;*/
+    /*text-transform: capitalize;*/
+    font-family: "Museo500";
+}
+.politicas ul li:first-child {
+    padding-right: 25px;
+    border-right: solid 1px #fff;
+}
+.politicas ul li:nth-child(2) {
+    padding-left: 20px;
+}
+/*inicia estilos para los controles de los formularios*/
+
+.cabecera {
+    padding: 3.5% 0px;
+    /*background-color: #079A69;*/
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    text-align: center;
+    /*background-color: #57B084;*/
+    background: -webkit-linear-gradient(left, #7AB761, #009A7C, #009EB0);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #7AB761, #009A7C, #009EB0);
+    /* Standard syntax */
+}
+.cabecera .letra-inicial {
+    padding: 10px;
+}     
+.cabecera .letra-inicial span {
+    background-color: #fff;
+    padding: 20px 25px;
+    border-radius: 50%;
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #57B084;
+    font-family: "Museo900";
+}
+.datos {
+    color: #fff;
+}
+/*stylo progressbar*/
+
+.progress{
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    background: none;
+    margin: 0 auto;
+    box-shadow: none;
+    position: relative;
+}
+.progress:after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 12px solid #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.progress > span{
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+.progress .progress-left{
+    left: 0;
+}
+.progress .progress-bar{
+    width: 100%;
+    height: 100%;
+    background: none;
+    border-width: 12px;
+    border-style: solid;
+    position: absolute;
+    top: 0;
+}
+.progress .progress-left .progress-bar{
+    left: 100%;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    border-left: 0;
+    -webkit-transform-origin: center left;
+    transform-origin: center left;
+}
+.progress .progress-right{
+    right: 0;
+}
+.progress .progress-right .progress-bar{
+    left: -100%;
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px;
+    border-right: 0;
+    -webkit-transform-origin: center right;
+    transform-origin: center right;
+    animation: loading-1 1.8s linear forwards;
+}
+.progress .progress-value{
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    background: #44484b;
+    font-size: 24px;
+    color: #fff;
+    line-height: 135px;
+    text-align: center;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+.progress.blue .progress-bar{
+    border-color: #049dff;
+}
+.progress.blue .progress-left .progress-bar{
+    animation: loading-2 1.5s linear forwards 1.8s;
+}
+.progress.yellow .progress-bar{
+    border-color: #fdba04;
+}
+.progress.yellow .progress-left .progress-bar{
+    animation: loading-3 1s linear forwards 1.8s;
+}
+.progress.pink .progress-bar{
+    border-color: #ed687c;
+}
+.progress.pink .progress-left .progress-bar{
+    animation: loading-4 0.4s linear forwards 1.8s;
+}
+.progress.green .progress-bar{
+    border-color: #1abc9c;
+}
+.progress.green .progress-left .progress-bar{
+    animation: loading-5 1.2s linear forwards 1.8s;
+}
+@keyframes loading-1{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+@keyframes loading-2{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+@keyframes loading-3{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+@keyframes loading-4{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+@keyframes loading-5{
+    0%{
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+@media only screen and (max-width: 990px){
+    .progress{ margin-bottom: 20px; }
+}
+
+
+.datos h2 {
+    text-transform: capitalize;
+    padding: 10px 0px;
+    font-weight: bold;
+    font-size: 28px;
+    font-family: "Museo700";
+}
+.datos p {
+    text-transform: lowercase;
+    padding: 5px 0px;
+}
+.cuerpo {
+    /*border: 1px solid #A4A4A4;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;*/
+    border-radius: 8px;
+    margin-bottom: 5%;
+    padding-bottom: 5%;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+}
+.panel-cuerpo {
+    padding: 0px;
+}
+.cuerpo .linea-divisora-formulario {
+    margin: 4% auto;
+    border-bottom: 1px solid #c2c2c2;
+    width: 65%;
+}
+.cuerpo .titulos-formulario h3 {
+    text-align: center;
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #999;
+    margin-bottom: 3%;
+    font-family: "Museo700";
+}
+.contenido-formulario {
+    padding-right: 6%;
+    padding-left: 6%;
+    margin-right: auto;
+    margin-left: auto;
+}
+.etiquetas {
+    color: #999;
+}
+.etiquetas span {
+    color: #C80000;
+}
+.linea-divisora-form {
+    margin: 4% auto;
+    border-bottom: 1px solid #c2c2c2;
+    width: 65%;
+}
+.controles .cajas-texto {
+    height: 40px;
+    height: 40px;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+    border: none !important;
+}
+.controles textarea {
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    border: none !important;
+}
+.controles .cajas-texto:focus {
+    border-color: #57B084;
+     outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(87, 176, 132.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(87, 176, 132.6);
+}
+.controles textarea:focus {
+    border-color: #57B084;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(87, 176, 132.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(87, 176, 132.6);
+}
+.controles span {
+    -webkit-border-radius: 10em 0em 0em 10em;
+    border-radius: 10em 0em 0em 10em;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    border: none !important;
+}
+.grupo-controles {
+    margin-bottom: 25px;
+}
+.detalles-modal {
+    text-align: center;
+    /*overflow: hidden;*/
+}
+.detalles-modal button, .detalles-modal .btn-anadir {
+    text-decoration: none;
+    color: #57B084;
+    background-color: #fff;
+    border: 1px solid #57B084;
+    transition: all 0.5s;
+    overflow: hidden;
+    padding: 8px 22px;
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.detalles-modal button:hover, .detalles-modal .btn-anadir:hover {
+    /*background-color: #57B084;*/
+    border: 1px solid #57B084;
+    color: #fff;
+    transition: all 0.5s;
+    /*background-color: #57B084;*/
+    background: -webkit-linear-gradient(left, #7AB761, #009A7C, #009EB0);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #7AB761, #009A7C, #009EB0);
+    /* Standard syntax */
+}
+.boton-principal-submit {
+    text-align: center;
+}
+.boton-principal-submit .btn-guardar-cambios {
+    margin-top: 2em;
+    padding: 10px 20px;
+    /*width: 60%;*/
+    color: #57B084;
+    font-size: 18px;
+    /*letter-spacing: 1px;*/
+    background-color: #fff;
+    border: 1px solid #57B084;
+    transition: all 0.5s;
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.boton-principal-submit .btn-guardar-cambios:hover {
+    /*background-color: #57B084;*/
+    background: -webkit-linear-gradient(left, #7AB761, #009A7C, #009EB0);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #7AB761, #009A7C, #009EB0);
+    /* Standard syntax */
+    color: #fff;
+}
+/*css mi area*/
+
+.edit-perfil {
+    /*border: 1px solid #999;
+    border-radius: 4px;*/
+    border: 1px solid #9999992e;
+    padding: 15px;
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.edit-perfil p {
+    text-align: left;
+    color: #848484;
+    font-size: 14px;
+    font-family: "Museo300"
+}
+.edit-perfil p span, .edit-perfil p span a {
+    color: #57B084;
+    font-weight: bold;
+    text-decoration: none;
+}
+.edit-perfil p a i {
+    float: right;
+    color: #57B084;
+    border-bottom: 1px solid #57B084;
+}
+.cv-adjuntar a {
+    text-decoration: none;
+    color: #57B084;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 4px;
+    /*background-color: #57B084;*/
+    background: -webkit-linear-gradient(left, #7AB761, #009A7C, #009EB0);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #7AB761, #009A7C, #009EB0);
+    /* Standard syntax */
+    color: #fff;
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.resumen-estado ul {
+    border: 1px solid #99999940;
+    border-radius: 4px;
+    -webkit-border-radius: 10em;
+    border-radius: 1em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.resumen-estado ul li {
+    list-style: none;
+    padding: 12px 2%;
+    border-bottom: 1px solid #99999952;
+    color: #848484;
+}
+.resumen-estado ul li span {
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 10px;
+    -webkit-border-radius: 10rem;
+    /* border-radius: 10rem; */
+    padding-right: .6em;
+    padding-left: 0.6em;
+    background: -webkit-linear-gradient(top, #7AB761, #009A7C, #009EB0);
+    background: linear-gradient(top, #7AB761, #009A7C, #009EB0);
+    /* font-weight: 700; */
+    padding: .25em 1.4em;
+    /* font-size: 75%; */
+    text-align: center;
+    /* border-radius: .25rem; */
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+   
+}
+/*ofertas que se adapten a tu perfil*/
+
+.empleos-body .content {
+    padding: 20px;
+    border: 1px solid #9999992e;
+    border-radius: 6px;
+    margin-right: 0px;
+    margin-top: 25px;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12); 
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+}
+
+.content .inicial {
+    float: left;
+    margin-right: 10px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 36px;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    font-family: "Museo900";
+    /*background-color: #57B084;*/
+    background: -webkit-linear-gradient(top, #7AB761, #009A7C, #009EB0);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom, #7AB761, #009A7C, #009EB0);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom, #7AB761, #009A7C, #009EB0);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom, #7AB761, #009A7C, #009EB0);
+    /* Standard syntax */
+}
+.content .btn-ver-mas .btn-ya {
+    padding: 5px 20px;
+    color: #57B084;
+    /* border: 1px solid #57B084; */
+    border-radius: 4px;
+    font-weight: bold;
+    transition: all 0.5s;
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+    /* -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12); */
+    /* box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12); */
+    /* background-color: #57B084; */
+    /* background: -webkit-linear-gradient(left, #7AB761, #009A7C, #009EB0); */
+    background: -o-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    background: -moz-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* background: linear-gradient(to right, #7AB761, #009A7C, #009EB0); */
+}
+.content .inicial-adaptan {
+    float: left;
+    margin-right: 10px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 36px;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    font-family: "Museo900";
+    /*background-color: #57B084
+    background: -webkit-linear-gradient(top, #7AB761, #009A7C, #009EB0);
+    background: -o-linear-gradient(bottom, #7AB761, #009A7C, #009EB0);
+    background: -moz-linear-gradient(bottom, #7AB761, #009A7C, #009EB0);
+    background: linear-gradient(to bottom, #7AB761, #009A7C, #009EB0);
+   Standard syntax */
+}
+.content .descripcion {
+    padding: 0px 15px;
+}
+.content .descripcion p:first-child {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 20px;
+    color: #5B5B5B;
+    font-family: "Museo700";
+}
+.content .descripcion p:nth-child(2) {
+    text-transform: capitalize;
+    color: #999;
+    font-size: 16px;
+    text-align: left;
+    font-family: "Museo300";
+}
+.content .descripcion small {
+    text-transform: capitalize;
+    color: #999;
+    font-size: 12px;
+    font-family: "Museo300";
+}
+.content .btn-ver-mas {
+    /*float: right;*/
+    text-align: right;
+}
+.content .btn-ver-mas .btn-ver {
+    padding: 5px 20px;
+    color: #57B084;
+    border: 1px solid #57B084;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: all 0.5s;
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.content .btn-ver-mas .btn-ver:hover {
+    border: 1px solid #57B084;
+    /*background-color: #57B084;*/
+    color: #fff;
+    /*background-color: #57B084;*/
+    background: -webkit-linear-gradient(left, #7AB761, #009A7C, #009EB0);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #7AB761, #009A7C, #009EB0);
+    /* Standard syntax */
+}
+/*css mis alertas*/
+
+.contenido-alerta {
+    border: 1px solid #9999992e;
+    padding: 40px 20px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+}
+.lista-alerta {
+    border-right: 1px solid #c2c2c2;
+    font-family: "Museo300";
+}
+.lista-alerta p:first-child {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 20px;
+    color: #5B5B5B;
+    font-family: "Museo700";
+}
+.lista-alerta p:nth-child(2) {
+    text-transform: capitalize;
+    color: #999;
+    font-size: 16px;
+    font-family: "Museo300";
+}
+.lista-alerta span {
+    text-transform: capitalize;
+    color: #999;
+    font-size: 12px;
+    font-family: "Museo300";
+}
+.matinal {
+    border-right: 1px solid #c2c2c2;
+    font-family: "Museo300";
+    text-align: center;
+}
+.diario p:first-child {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 20px;
+    color: #57B084;
+    font-family: "Museo700";
+}
+.diario p:nth-child(2) {
+    text-transform: capitalize;
+    color: #999;
+    font-size: 16px;
+    font-family: "Museo300";
+}
+.diario span {
+    text-transform: capitalize;
+    color: #999;
+    font-size: 12px;
+    font-family: "Museo300";
+}
+.acciones {
+    text-align: center;
+}
+.acciones i {
+    color: #57B084;
+    font-size: 16px;
+}
+.lista-alerta, .matinal, .acciones {
+    margin-top: 10px;
+}
+.lista-chk {
+    display: table;
+    width: 100%;
+}
+.lista-chk ul li {
+    width: 33%;
+    float: left;
+    list-style: none;
+}
+/*css busqueda de ofertas*/
+
+.contenido-descripcion-aviso h2 {
+    color: #5B5B5B;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: "Museo700";
+    font-size: 20px;
+    padding: 30px 10px;
+}
+.contenido-descripcion-aviso p {
+    color: #848484;
+    font-family: "Museo300";
+    font-size: 14px;
+    padding: 10px 50px;
+    text-align: justify;
+}
+.filtros-busqueda {
+    text-align: center;
+}
+.filtros-busqueda ul li {
+    padding: 2px 6px;
+    margin-bottom: 6px;
+    color: #ffffff;
+    list-style: none;
+    display: inline-flex;
+    width: auto;
+    /*border-radius: 2px;*/
+    border: 0;
+    /*background-color: #57B084;*/
+    background: -webkit-linear-gradient(left, #7AB761, #009A7C, #009EB0);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #7AB761, #009A7C, #009EB0);
+    /* Standard syntax */
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+}
+/*postulaciones*/
+
+.postulacion-body {
+    padding: 20px 0px;
+    /*border: 1px solid #c2c2c2;*/
+    border-radius: 6px;
+    margin-right: 0px;
+    margin-top: 25px;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+}
+.btn-delete-mp {
+    /*position: relative;*/
+    right: 10px;
+    display: none;
+    opacity: 0;
+    transition: all 0.5s;
+    cursor: pointer;
+    width: 25px;
+    float: right;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+}
+.postulacion-body:hover a.btn-delete-mp {
+    display: block;
+    opacity: 1;
+    /*position: absolute;*/
+    cursor: pointer;
+}
+.content-postulacion .inicial {
+    float: left;
+    margin-right: 10px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 36px;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    font-family: "Museo900";
+    /* background-color: #57B084; */
+    background: -webkit-linear-gradient(top, #7AB761, #009A7C, #009EB0);
+    background: -o-linear-gradient(bottom, #7AB761, #009A7C, #009EB0);
+    background: -moz-linear-gradient(bottom, #7AB761, #009A7C, #009EB0);
+    background: linear-gradient(to bottom, #7AB761, #009A7C, #009EB0);
+}
+.content-postulacion .descripcion {
+    padding: 0px 15px;
+}
+.content-postulacion .descripcion p:first-child {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 20px;
+    color: #5B5B5B;
+    font-family: "Museo700";
+}
+.content-postulacion .descripcion p:nth-child(2) {
+    text-transform: capitalize;
+    color: #999;
+    font-size: 16px;
+    text-align: left;
+    font-family: "Museo300";
+}
+.content-postulacion .descripcion small {
+    text-transform: capitalize;
+    color: #999;
+    font-size: 12px;
+    font-family: "Museo300";
+}
+.estado-postulacion {
+    text-align: center;
+}
+.estado-postulacion .items-estado .item {
+    display: inline-block;
+    padding: 2px;
+    color: #B4B4B4;
+}
+.estado-postulacion .items-estado .activo p:first-child {
+    color: #57B084;
+    font-weight: bold;
+    font-size: 18px;
+}
+.estado-postulacion .items-estado .activo p:nth-child(2) {
+    /*background-color: #57B084 !important;*/
+    padding: 10px;
+    color: #fff;
+    /*background-color: #57B084;*/
+    background: -webkit-linear-gradient(left, #7AB761, #009A7C, #009EB0);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #7AB761, #009A7C, #009EB0);
+    /* Standard syntax */
+}
+.estado-postulacion .items-estado div.item .texto {
+    background-color: #B4B4B4;
+    padding: 10px;
+    color: #fff;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+}
+/************************************/
+
+/****** estilos para la empresa *****/
+
+/************************************/
+
+.servicios-panel {
+    margin-bottom: 2em;
+}
+.servicios {
+    /*border: 1px solid #A4A4A4;*/
+    border-radius: 1em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    
+}
+.servicios:hover{
+    box-shadow: 0px 7px 12px rgba(0,0,0,0.45);
+    transform: translate3d(0px, -3px, 0px);
+}
+.titulo-servicio {
+    /*background-color: #57B084;*/
+    background: -webkit-linear-gradient(left, #7AB761, #009A7C, #009EB0);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #7AB761, #009A7C, #009EB0);
+    /* Standard syntax */
+    text-align: center;
+    color: #fff;
+    padding: 15px;
+    text-transform: capitalize;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+}
+.titulo-servicio h4 {
+    font-family: "Museo700";
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.contenido-sevicio {
+    text-align: center;
+    padding: 15px 10px;
+}
+.contenido-sevicio p {
+    color: #848484;
+    font-size: 16px;
+    font-family: "Museo500";
+}
+.contenido-sevicio .precio-servicio, .contenido-sevicio .cantidad-avisos, .contenido-sevicio .cantidad-cv-ver, .contenido-sevicio .precio-aviso {
+    padding: 8px 0px;
+}
+.contenido-sevicio .precio-servicio p strong, .contenido-sevicio .cantidad-avisos p strong, .contenido-sevicio .cantidad-cv-ver p strong, .contenido-sevicio .precio-aviso p strong {
+    color: #57B084;
+    font-size: 18px;
+    font-family: "Museo300";
+}
+.content-avisos-publicados {}
+.titulo-avisos-publicados h3, .caducidad span, .caducidad small, .cvs-inscritos span, .cvs-inscritos small, .estado-aviso small {
+    padding: 10px 0px;
+}
+.avisos-publicados {
+    border: 1px solid #9999992e;
+    /*border-radius: 6px;*/
+    padding: 30px 15px;
+    text-align: center;
+    color: #848484;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.titulo-avisos-publicados h3 {
+    font-family: "Museo700";
+    font-weight: bold;
+    text-align: left;
+    text-transform: capitalize;
+}
+.caducidad span, .cvs-inscritos span {
+    font-family: "Museo700";
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 18px;
+}
+.caducidad {
+    border-left: 1px solid #A4A4A4;
+    border-right: 1px solid #A4A4A4;
+}
+.cvs-inscritos {
+    border-right: 1px solid #A4A4A4;
+}
+.current-aviso {
+    /* border: 1px solid #57B084;*/
+    padding: 15px;
+    /*text-align: center;*/
+    color: #848484;
+    margin-bottom: 2em;
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.current-aviso strong {
+    color: #57B084;
+    font-weight: bold;
+    font-size: 20px;
+}
+.current-aviso p {
+    float: left;
+}
+a.publicar-aviso {
+    float: right;
+    padding: 10px;
+    text-decoration: none;
+    background-color: transparent;
+    color: white;
+    border: 1px solid #57B084;
+    transition: all 0.5s;
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+    background: -webkit-linear-gradient(left, #7AB761, #009A7C, #009EB0);
+    background: -o-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    background: -moz-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+     background: linear-gradient(to right, #7AB761, #009A7C, #009EB0);
+}
+a.publicar-aviso:hover {
+    background: -webkit-linear-gradient(left, #7AB761, #009A7C, #009EB0);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #7AB761, #009A7C, #009EB0);
+    /* Standard syntax */
+    color: #fff;
+    border: 1px solid #57B084;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    -ms-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    
+}
+.linea {
+    border-bottom: 1px solid #c2c2c2;
+    width: 100%;
+    margin: 10px 0px;
+}
+.contenido-descripcion-curriculum {
+    padding: 10px 0px;
+}
+.contenido-descripcion-curriculum h3 {
+    color: #646464;
+    font-weight: bold;
+}
+.contenido-descripcion-curriculum h4 {
+    text-transform: capitalize;
+    line-height: 30px;
+    color: #666;
+}
+.contenido-descripcion-curriculum small {
+    color: #656565;
+}
+.contenido-descripcion-curriculum .funciones {
+    color: #848484;
+    font-family: "Museo300";
+    font-size: 15px;
+    /*padding: 10px 0px;*/
+    text-align: justify;
+}
+.funciones ul li {
+    list-style: none;
+    padding: 0px 12px;
+}
+.contenido-descripcion-curriculum h2 {
+    color: #5B5B5B;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: "Museo700";
+    font-size: 20px;
+    /* padding: 30px 10px; */
+}
+.contenido-descripcion-curriculum p {
+    color: #848484;
+    font-family: "Museo300";
+    font-size: 15px;
+    padding: 10px 0px;
+    text-align: justify;
+}
+.img-user {
+    margin: 0 auto;
+    display: block;
+}
+.contenido-cv {
+    position: relative;
+    border: 1px solid #dedede;
+    float: left;
+    width: 100%;
+}
+.datos-personales-postulante {
+    padding: 10px;
+    /*background-color: #F9F9F9;*/
+    /*height: 1024px;*/
+    /*border-right: 1px solid #dedede;*/
+}
+.datos-personales-postulante h4 {
+    font-family: "Museo700";
+    text-transform: capitalize;
+    text-align: center;
+    color: #646464;
+    padding: 12px 0px;
+}
+.datos-personales-postulante p {
+    padding: 9px 0px;
+    color: #666;
+    font-size: 15px;
+    font-family: "Museo500";
+    text-align: left;
+}
+.my-tabs {
+    border-bottom: 1px solid #009A7C;
+}
+.my-tabs li.active a {
+    color: #009A7C;
+    border: 1px solid #009A7C;
+    border-bottom-color: transparent;
+    font-family: "Museo700";
+}
+.my-tabs li a {
+    color: #848484;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #009A7C;
+    border: 1px solid #009A7C;
+    border-bottom-color: transparent;
+    font-family: "Museo700";
+}
+.my-tabs li a:hover {
+    color: #009A7C;
+}
+/*reclutamientos*/
+
+.submenu-empresa {
+    border-bottom: 1px solid #A4A4A4;
+}
+.submenu-empresa .empresa-items {
+    padding: 15px;
+    text-align: center;
+    text-transform: capitalize;
+}
+.submenu-empresa .empresa-items:first-child {
+    border-right: 1px solid #A4A4A4;
+}
+.submenu-empresa .empresa-items:nth-child(2) {
+    border-right: 1px solid #A4A4A4;
+}
+.submenu-empresa .empresa-items a {
+    text-decoration: none;
+    color: #848484;
+    font-family: "Museo700";
+    text-transform: capitalize;
+}
+.submenu-empresa .item-activo a {
+    color: #57B084;
+}
+/*buscar candidatos*/
+.img-tamano{
+    height: 100px;
+    padding-left: 10px;
+    /* margin-right: 10px; */
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 100px;
+}
+.img-tamano-adaptan{
+   
+    height: 75px;
+}
+
+.candidato-body {
+    padding: 20px;
+    /*border: 1px solid #c2c2c2;*/
+    border-radius: 6px;
+    margin-right: 0px;
+    margin-top: 25px;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.content-candidato .inicial {
+    float: left;
+    margin-right: 10px;
+    /*padding: 10px 20px;*/
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 36px;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    font-family: "Museo900";
+    /* background-color: #57B084; */
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.content-candidato .descripcion {
+    padding: 0px 15px;
+}
+.content-candidato .descripcion p:first-child {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 20px;
+    color: #5B5B5B;
+    font-family: "Museo700";
+}
+.content-candidato .descripcion p:nth-child(2) {
+    text-transform: capitalize;
+    color: #999;
+    font-size: 16px;
+    text-align: left;
+    font-family: "Museo300";
+}
+.content-candidato .descripcion small {
+    text-transform: capitalize;
+    color: #999;
+    font-size: 12px;
+    font-family: "Museo300";
+}
+.cabecera-table {
+    /*background-color: #57B084;*/
+    /*background-color: #57B084;*/
+    background: -webkit-linear-gradient(left, #7AB761, #009A7C, #009EB0);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #7AB761, #009A7C, #009EB0);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #7AB761, #009A7C, #009EB0);
+    /* Standard syntax */
+    color: #ffffff;
+}
+.nombre-candidato {
+    color: #009A7C;
+}
+.left {
+    float: right;
+    text-decoration: none;
+    color: #009A7C;
+    margin-bottom: 5px;
+}
+.left a {
+    text-decoration: none;
+    color: #009A7C;
+    opacity: 0.8;
+}
+.left a i {
+    border-bottom: 1px solid #009A7C;
+}
+.left a:hover {
+    opacity: 1;
+}
+.tabla-datos-empresa tr td {
+    padding: 10px 30px!important;
+}
+.tabla-datos-empresa tr td.table-titulo {
+    color: #848484;
+    font-family: "Museo300";
+}
+.tabla-datos-empresa tr td.table-descrip {
+    color: #848484;
+    font-family: "Museo700";
+}
+.contenido-usuario-registrado {
+    /*border: 1px solid #848484;*/
+    padding: 20px;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+}
+.contenido-usuario-registrado p {
+    font-family: "Museo300";
+    font-size: 16px;
+}
+.contenido-usuario-registrado p strong {
+    font-family: "Museo700";
+    color: #57B084;
+}
+/*soporte*/
+
+.cuerpo .linea-divisora-soporte {
+    margin: 4% auto;
+    border-bottom: 1px solid #57B084;
+    width: 65%;
+}
+.descripcion-soporte {
+    padding: 20px;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+.descripcion-soporte p {
+    font-family: "Museo500";
+    color: #848484;
+    text-align: justify;
+    padding: 10px 0px;
+}
+.botones-soprte .btn-sopporte {
+    background-color: #57B084;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 1.5em;
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+/* css detalles */
+
+.lista-migas {
+    list-style: none;
+    padding-left: 0px;
+    margin: 10px 2px;
+    width: auto;
+}
+.lista-migas li {
+    margin: 2px;
+    /*background-color: #1469aa;*/
+    padding: 8px;
+    width: auto;
+    color: #fff;
+    border-radius: 4px;
+    display: inline-flex;
+    /*background-color: #57B084;*/
+    background: -webkit-linear-gradient(left, #9ACB75, #57B084, #2CAEBB);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #9ACB75, #57B084, #2CAEBB);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #9ACB75, #57B084, #2CAEBB);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #9ACB75, #57B084, #2CAEBB);
+    /* Standard syntax */
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+    -webkit-border-radius: 10em;
+    border-radius: 10em;
+}
+.lista-migas li a {
+    color: #fff;
+    margin-left: 5px;
+    ;
+}
+.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+    padding: 20px 30px;
+}
+.modal .modal-delete {
+    max-width: 400px;
+}
+.modal-delete .modal-footer {
+    background: #ecf0f1;
+}
+.modal .modal-content {
+    border-radius: 3px;
+}
+#resultados, #resultados2, #resultados3, #resultados4, #resultados5, #resultados6, #resultados7 {
+    position: fixed;
+    bottom: 0px;
+    right: 10px;
+    z-index: +1000;
+    width: auto;
+}
+/******************************************************/
+
+/* css para el menu en responsive*/
+
+/******************************************************/
+
+.navbar-inverse .navbar-toggle {
+    border-color: #57B084;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #57B084;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #57B084;
+}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: #57B084;
+}
+.navbar-inverse .navbar-toggle:focus .icon-bar, .navbar-inverse .navbar-toggle:hover .icon-bar {
+    background-color: #fff;
+}
+#header-logo {
+    background-image: url(../img/logo-elabora-v2.png);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-left: 10px;
+    padding: 0px 70px;
+    float: left;
+    height: 50px;
+    max-width: 145px;
+    opacity: 1;
+}
+.logo-footer img {
+    margin: 0 auto;
+    width: 200px;
+}
+.logo-empresa {
+    margin: 0 auto;
+}
+.foto_logo {
+    margin: 0 auto;
+    width: 160px;
+}
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #ccc!important;
+    border-radius: 0px !important;
+    height: 40px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #444;
+    line-height: 38px !important;
+}
+/*************************************************************************************************************************/
+
+/*************************************************************************************************************************/
+
+/*********************************  ESTILOS PARA EL RESPONSIVE EN MODO DISPOSITIVOS **************************************/
+
+/*************************************************************************************************************************/
+
+/*************************************************************************************************************************/
+
+@media (min-width: 425px) and (max-width: 768px) {
+    /***************** css para la page princiapl /*****************/
+    .cuerpo .linea-divisora-formulario {
+        margin: 7% auto;
+        border-bottom: 1px solid #c2c2c2;
+        width: 90%;
+    }
+    .cuerpo .titulos-formulario h3 {
+        text-align: center;
+        font-weight: bold;
+        text-transform: capitalize;
+        margin-bottom: 5%;
+    }
+    /*********** css para curriculum ****************/
+    .cabecera .letra-inicial span {
+        padding: 20px 24px;
+        font-size: 36px;
+    }
+    .detalles-modal button, .detalles-modal .btn-anadir {
+        padding: 8px 12px;
+    }
+    .linea-divisora-form {
+        width: 95%;
+    }
+    /*css para el cambio de contraseña*/
+    .grupo-controles {
+        margin-bottom: 8px;
+    }
+    .btn-usuario {
+        margin-top: 12px!important;
+    }
+    .form-edit-user {
+        margin-top: 20px;
+    }
+    /*********** estilos para la plataforma de empresa*/
+    .contenido-sevicio p {
+        font-size: 14px;
+    }
+}
+@media (min-width: 0px) and (max-width: 425px) {
+    .cuerpo .linea-divisora-formulario {
+        margin: 12% auto;
+        border-bottom: 1px solid #c2c2c2;
+        width: 90%;
+    }
+    .cuerpo .titulos-formulario h3 {
+        text-align: center;
+        font-weight: bold;
+        text-transform: capitalize;
+        margin-bottom: 8%;
+        font-size: 18px;
+    }
+    .controles-xs {
+        margin-bottom: 3%;
+    }
+    .etiket {
+        display: none;
+    }
+    .cabecera .letra-inicial span {
+        padding: 15px 18px;
+        font-size: 20px;
+    }
+    .datos h2 {
+        font-size: 20px;
+    }
+    /* css alerta */
+    .lista-chk ul li {
+        width: 100%;
+    }
+    /*css para la configuracion*/
+    .contenido-usuario-registrado p {
+        font-size: 14px;
+    }
+    /*css para el cambio de contraseña*/
+    .grupo-controles {
+        margin-bottom: 8px;
+    }
+    .btn-usuario {
+        margin-top: 12px!important;
+    }
+    .form-edit-user {
+        margin-top: 20px;
+    }
+    /*********** estilos para la plataforma de empresa*/
+    .contenido-sevicio p {
+        font-size: 14px;
+    }
+    /*css reclutamiento*/
+    .submenu-empresa .empresa-items:first-child {
+        border-right: 0;
+    }
+    .submenu-empresa .empresa-items:nth-child(2) {
+        border-right: 0;
+    }
+    .sub-menu .sub-menu-items li a {
+        padding: 8px 30px !important;
+        color: #999;
+    }
+    .mi-collapse .mi-nav-derecho li a {
+        color: #57B084;
+        opacity: 0.9;
+        transition: all 0.3s;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .mi-collapse .mi-nav-derecho li a:hover, .mi-collapse .mi-nav-derecho li a:active, .mi-collapse .mi-nav-derecho li a:focus {
+        color: #57B084 !important;
+        opacity: 1;
+        background-color: #f5f5f5 !important;
+    }
+    #header-logo {
+        padding: 0px 0px;
+        max-width: 115px;
+    }
+    .barrita-user {
+        float: right;
+    }
+    .logo-footer img {
+        width: 130px;
+    }
+    .nav-tabs>li {
+        float: none;
+        margin-bottom: -1px;
+        text-align: center;
+    }
+    .politicas ul li:first-child {
+        padding-right: 0px;
+        border-right: none;
+    }
+    .politicas ul li {
+        list-style: none;
+        display: inline-flex;
+        padding-right: 0px;
+        /*text-transform: capitalize; */
+    }
+    .politicas ul li:nth-child(2) {
+        padding-left: 0px;
+    }
+    .cv-adjuntar a {
+        font-size: 12px;
+    }
+    .boton-principal-submit .btn-guardar-cambios {
+        font-size: 12px;
+    }
+    .contenido-formulario {
+        padding-right: 4px;
+        padding-left: 4px;
+    }
+    a.publicar-aviso {
+        width: 100%;
+        text-align: center;
+    }
+}

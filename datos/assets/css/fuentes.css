@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Museo700";
+  src: url("../fonts/MuseoSans.otf");
+}
+@font-face {
+  font-family: "Museo900";
+  src: url("../fonts/MuseoSans_0.otf");
+}
+@font-face {
+  font-family: "Museo500";
+  src: url("../fonts/MuseoSans-500.otf");
+}
+@font-face {
+  font-family: "Museo300";
+  src: url("../fonts/MuseoSans-300_0.otf");
+}
+
+

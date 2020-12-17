@@ -1,0 +1,10 @@
+
+
+form{
+	width: 400px; margin: 20px auto;
+	position: relative;
+}
+.ajaxgif{
+	position:absolute; bottom:12px; right:-20px;}
+.hide{
+	display:none;}
