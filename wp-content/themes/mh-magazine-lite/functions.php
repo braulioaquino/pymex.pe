@@ -19,6 +19,10 @@ function mh_magazine_lite_official_theme() {
 	return $official_theme;
 }
 
+
+ /* Inicio CRON PARA PYMEX */
+  /* Fin CRON PARA PYMEX */
+
 /***** Custom Hooks *****/
 
 function mh_before_header() {
