@@ -108,3 +108,33 @@ function f_generate_after_main_content() {
 
     }
 }
+
+add_action( 'generate_after_page_title','f_generate_after_page_title' );
+function f_generate_after_page_title() {
+    if( !wp_is_mobile() ) { ?>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+			style="display:block"
+			data-ad-client="ca-pub-7512798297333598"
+			data-ad-slot="7653611709"
+			data-ad-format="link"
+			data-full-width-responsive="true"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+        <?php
+    }
+    else { ?>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<ins class="adsbygoogle"
+			 style="display:block"
+			 data-ad-client="ca-pub-7512798297333598"
+			 data-ad-slot="3236799984"
+			 data-ad-format="link"
+			 data-full-width-responsive="true"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+        <?php
+    }
+}
